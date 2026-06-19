@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2nd ODI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body
+    style="background-image: url('assets/background.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+</body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🏏 CRICKET_SCORE_MASTER
+    </div>
+
+    <ul class="menu">
+        <li><a href="index.html" style="color:white;text-decoration:none;">HOME</a></li>
+        <li class="active">2nd ODI</li>
+    </ul>
+
+</header>
+
+<div class="odi-page">
+
+    <h1 class="winner">
+        INDIA- 488/3 50ovrs<br>
+        AUSTRALIA-466/10 49ovrs
+
+    </h1>
+    <hr>
+    <div class="tabs">
+
+        <button class="tab-btn active-tab" onclick="showODITab('overview1',this)">
+            OVERVIEW
+        </button>
+
+        <button class="tab-btn" onclick="showODITab('scoreboard1',this)">
+            SCOREBOARD
+        </button>
+
+    </div>
+
+    <!-- OVERVIEW -->
+
+    <div id="overview1" class="odi-content active-content">
+
+        <div class="info-card">
+
+            <h2 style="text-align: center;">🏆 PLAYER OF THE MATCH</h2>
+
+            <p style="text-align: center;">Rohit Sharma - 205 (130)</p>
+
+        </div>
+        <hr>
+        <h2 style="text-align: center;color: #9dfc05;">India won by 22 runs</h2>
+        <div class="overview-grid">
+
+            <div class="info-card">
+
+                <h3>INDIA</h3>
+
+                <p>Rohit Sharma - 205 (130)</p>
+                <p>virat - 100 (54)</p>
+
+                <h3>Best Australia Bowling</h3>
+
+                <p>Starc - 2/70</p>
+                <p>Zampa - 1/72</p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>AUSTRALIA</h3>
+
+                <p>Glenn maxwell - 200 (150)</p>
+                <p>Travis Head - 150 (80)</p>
+
+                <h3>Best India Bowling</h3>
+
+                <p>Jadeja - 5/60</p>
+                <p>Shami - 2/61</p>
+
+            </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>Venue</h3>
+
+            <p>Eden Gardens, Kolkata</p>
+
+        </div>
+
+    </div>
+
+    <!-- SCOREBOARD -->
+
+    <div id="scoreboard1" class="odi-content">
+
+        <div class="innings-buttons">
+
+            <button onclick="showInnings('innings1')">
+                india batting
+            </button>
+
+            <button onclick="showInnings('innings2')">
+                australia batting
+            </button>
+
+        </div>
+
+        <!-- INDIA INNINGS -->
+
+        <div id="innings1" class="innings active-innings">
+
+            <div class="overview-grid">
+
+                <div class="info-card">
+
+                    <h3 style="text-align: center;">INDIA BATTING</h3>
+
+                    <table border="1">
+                        <tr>
+                            <th>name</th>
+                            <th>runs</th>
+                            <th>balls</th>
+                            <th>4s</th>
+                            <th>6s</th>
+                            <th>sr</th>
+
+                        </tr>
+                        <tr>
+                            <td>rohit sharma</td>
+                            <td>205</td>
+                            <td>130</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>157.69</td>
+                        </tr>
+                        <tr>
+                            <td>shubman gill</td>
+                            <td>70</td>
+                            <td>50</td>
+                            <td>8</td>
+                            <td>0</td>
+                            <td>140</td>
+
+                        </tr>
+                        <tr>
+                            <td>virat kohli</td>
+                            <td>100</td>
+                            <td>56</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td>178.57</td>
+                        </tr>
+                        <tr>
+                            <td>shreyash iyer</td>
+                            <td>30</td>
+                            <td>20*</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>kl rahul</td>
+                            <td>70</td>
+                            <td>44*</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>156.26</td>
+                        </tr>
+                        <tr>
+                            <td>hardik pandya</td>
+                            <td>dnb</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ravindra jadeja</td>
+                            <td>DNB</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>muhammad shami</td>
+                            <td>DNB</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>kuldeep yadav</td>
+                            <td>DNB</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>muhammad siraj</td>
+                            <td>DNB</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>jasprit bumrah</td>
+                            <td>DNB</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tfoot>
+                            <td>extras:13</td>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="info-card">
+
+                    <h3 style="text-align: center;">AUSTRALIA BOWLING</h3>
+
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Overs</th>
+                            <th>M</th>
+                            <th>W</th>
+                            <th>R</th>
+                            <th>Eco</th>
+                        </tr>
+
+                        <tr>
+                            <td>Mitchell Starc</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>70</td>
+                            <td>7.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adam Zampa</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>72</td>
+                            <td>7.20</td>
+                        </tr>
+
+                        <tr>
+                            <td>Pat Cummins</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>80</td>
+                            <td>8.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Josh Hazlewood</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>01</td>
+                            <td>110</td>
+                            <td>12.22</td>
+                        </tr>
+
+                        <tr>
+                            <td>Glenn Maxwell</td>
+                            <td>8</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>106</td>
+                            <td>13.25</td>
+                        </tr>
+
+                        <tr>
+                            <td>Travis Head</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>40</td>
+                            <td>20.00</td>
+                        </tr>
+                        <tr>
+                            <td>Mitchel Marsh</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>10</td>
+                            <td>10.00</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- AUSTRALIA INNINGS -->
+
+        <div id="innings2" class="innings">
+
+            <div class="overview-grid">
+
+                <div class="info-card">
+
+                    <h3>AUSTRALIA BATTING</h3>
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Runs</th>
+                            <th>Balls</th>
+                            <th>4s</th>
+                            <th>6s</th>
+                            <th>SR</th>
+                        </tr>
+
+                        <tr>
+                            <td>David Warner</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Travis Head</td>
+                            <td>150</td>
+                            <td>80</td>
+                            <td>13</td>
+                            <td>5</td>
+                            <td>187.50</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mitchell Marsh</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>66.66</td>
+                        </tr>
+
+                        <tr>
+                            <td>Steve Smith</td>
+                            <td>50</td>
+                            <td>36</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>138.88</td>
+                        </tr>
+
+                        <tr>
+                            <td>Marnus Labuschagne</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>00.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Glenn Maxwell</td>
+                            <td>200</td>
+                            <td>150*</td>
+                            <td>10</td>
+                            <td>18</td>
+                            <td>133.33</td>
+                        </tr>
+
+                        <tr>
+                            <td>Josh Inglis</td>
+                            <td>30</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td>300.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Pat Cummins</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>333.33</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mitchell Starc</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>00.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adam Zampa</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>00.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Josh Hazlewood</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>00.00</td>
+                        </tr>
+
+                        <tfoot>
+                            <td>extras:16</td>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                <div class="info-card">
+
+                    <h3 style="text-align: center;">INDIA BOWLING</h3>
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Overs</th>
+                            <th>M</th>
+                            <th>W</th>
+                            <th>R</th>
+                            <th>Eco</th>
+                        </tr>
+
+                        <tr>
+                            <td>Mohammed Shami</td>
+                            <td>19</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>61</td>
+                            <td>6.10</td>
+                        </tr>
+
+                        <tr>
+                            <td>Jasprit Bumrah</td>
+                            <td>10</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>80</td>
+                            <td>8.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mohammed Siraj</td>
+                            <td>7</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>70</td>
+                            <td>10.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Kuldeep Yadav</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>123</td>
+                            <td>13.66</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ravindra Jadeja</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>60</td>
+                            <td>6.00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Hardik Pandya</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>72</td>
+                            <td>18.00</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

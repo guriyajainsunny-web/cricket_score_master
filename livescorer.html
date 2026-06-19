@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        CRICKET_SCORE_MASTER - Live Scorer
+    </title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            🏏 CRICKET_SCORE_MASTER
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="index.html" style="color:white;text-decoration:none;">
+                    HOME
+                </a>
+            </li>
+
+            <li class="active">
+                LIVE SCORER
+            </li>
+
+        </ul>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-overlay">
+
+            <!-- LIVE BADGE -->
+
+            <div class="live-badge">
+                LIVE
+            </div>
+
+            <!-- MATCH TITLE -->
+
+            <div class="match-title">
+
+                <span id="teamBat">
+                    TEAM A
+                </span>
+
+                <span style="color:#9dfc05;">
+                    vs
+                </span>
+
+                <span id="teamBowl">
+                    TEAM B
+                </span>
+
+            </div>
+
+            <div class="series-title" id="matchName">
+                Match Name
+            </div>
+
+            <br>
+
+            <!-- SCOREBOARD -->
+
+            <div class="scoreboard">
+
+                <!-- BATTERS -->
+
+                <div class="batters">
+
+                    <div class="batter">
+
+                        <span class="name" id="strikerName">
+                            Striker ★
+                        </span>
+
+                        <span class="runs" id="strikerScore">
+                            0 (0)
+                        </span>
+
+                    </div>
+
+                    <div class="batter">
+
+                        <span class="name" id="nonStrikerName">
+                            Non-Striker
+                        </span>
+
+                        <span class="runs" id="nonStrikerScore">
+                            0 (0)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- CENTER SCORE -->
+
+                <div class="center-box">
+
+                    <div class="match">
+                        LIVE MATCH
+                    </div>
+
+                    <div class="score-pill" id="scoreDisplay">
+                        0-0
+                    </div>
+
+                    <div class="overs" id="oversDisplay">
+                        0.0 Overs
+                    </div>
+
+                    <div class="pp" id="runRate">
+                        RR 0.00
+                    </div>
+
+                </div>
+
+                <!-- BOWLER -->
+
+                <div class="right-panel">
+
+                    <div class="bowler" id="bowlerDisplay">
+                        Bowler
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- MATCH INFO -->
+
+            <div class="info-card">
+
+                <h3>
+                    Match Info
+                </h3>
+
+                <p id="inningsDisplay">
+                    1st Innings
+                </p>
+
+                <hr>
+
+                <p id="lastOverDisplay">
+                    Last Over : -
+                </p>
+
+                <p id="last5OversDisplay">
+                    Last 5 Overs : -
+                </p>
+
+                <p id="predictedScoreDisplay">
+                    Predicted Score : -
+                </p>
+
+                <p id="winPercentDisplay">
+                    Live Win % : -
+                </p>
+
+                <hr>
+
+                <div id="secondInningsInfo" style="display:none;">
+
+                    <p id="targetDisplay">
+                        Target : -
+                    </p>
+
+                    <p id="crrDisplay">
+                        CRR : -
+                    </p>
+
+                    <p id="rrrDisplay">
+                        RRR : -
+                    </p>
+
+                    <p id="needDisplay">
+                        Need : -
+                    </p>
+
+                    <p id="oversRemainingDisplay">
+                        Overs Remaining : -
+                    </p>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- SCORING BUTTONS -->
+
+            <div class="info-card">
+
+                <h3>
+                    Scoring Buttons
+                </h3>
+
+                <div style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:10px;
+                    justify-content:center;
+                ">
+
+                    <button onclick="addRuns(0)">0</button>
+                    <button onclick="addRuns(1)">1</button>
+                    <button onclick="addRuns(2)">2</button>
+                    <button onclick="addRuns(3)">3</button>
+                    <button onclick="addRuns(4)">4</button>
+                    <button onclick="addRuns(5)">5</button>
+                    <button onclick="addRuns(6)">6</button>
+
+                    <button onclick="showWideOptions()">
+                        WD
+                    </button>
+
+                    <button onclick="showNoBallOptions()">
+                        NB
+                    </button>
+
+                    <button onclick="showByeOptions()">
+                        BYE
+                    </button>
+
+                    <button onclick="showLegByeOptions()">
+                        LB
+                    </button>
+
+                    <button onclick="wicket()">
+                        WICKET
+                    </button>
+
+                    <button onclick="undoBall()">
+                        UNDO
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- EXTRA OPTIONS -->
+
+            <div class="info-card" id="extraOptions" style="display:none;margin-top:20px;">
+
+            </div>
+
+            <!-- WICKET PANEL -->
+
+            <div class="info-card" id="wicketPanel" style="display:none;margin-top:20px;">
+
+                <h3>
+                    Wicket Details
+                </h3>
+
+                <label>
+                    Wicket Type
+                </label>
+
+                <select id="wicketType">
+
+                    <option value="">
+                        Select Wicket Type
+                    </option>
+
+                    <option value="Bowled">
+                        Bowled
+                    </option>
+
+                    <option value="Caught">
+                        Caught
+                    </option>
+
+                    <option value="LBW">
+                        LBW
+                    </option>
+
+                    <option value="Run Out">
+                        Run Out
+                    </option>
+
+                    <option value="Stumped">
+                        Stumped
+                    </option>
+
+                </select>
+
+                <br><br>
+
+                <label>
+                    Fielder
+                </label>
+
+                <select id="fielderSelect">
+
+                </select>
+
+                <br><br>
+
+                <label>
+                    New Batsman
+                </label>
+
+                <select id="newBatsmanSelect">
+
+                </select>
+
+                <br><br>
+
+                <button onclick="confirmWicket()">
+                    Confirm Wicket
+                </button>
+
+            </div>
+
+            <!-- NEW BOWLER PANEL -->
+
+            <div class="info-card" id="newBowlerPanel" style="display:none;margin-top:20px;">
+
+                <h3>
+                    Select New Bowler
+                </h3>
+
+                <select id="newBowlerSelect">
+
+                </select>
+
+                <br><br>
+
+                <button onclick="confirmBowler()">
+                    Confirm Bowler
+                </button>
+
+            </div>
+
+            <br>
+
+            <!-- BATTING SCORECARD -->
+
+            <div class="info-card">
+
+                <h3>
+                    Batting Scorecard
+                </h3>
+
+                <table id="battingTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Batter</th>
+                            <th>Dismissal</th>
+                            <th>R</th>
+                            <th>B</th>
+                            <th>4s</th>
+                            <th>6s</th>
+                            <th>SR</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <br>
+
+            <!-- PARTNERSHIP -->
+
+            <div class="info-card">
+
+                <h3>
+                    Partnership
+                </h3>
+
+                <div id="partnershipDisplay">
+                    0 (0)
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- FALL OF WICKETS -->
+
+            <div class="info-card">
+
+                <h3>
+                    Fall Of Wickets
+                </h3>
+
+                <div id="fowDisplay">
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- BOWLING SCORECARD -->
+
+            <div class="info-card">
+
+                <h3>
+                    Bowling Scorecard
+                </h3>
+
+                <table id="bowlingTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Bowler</th>
+                            <th>O</th>
+                            <th>M</th>
+                            <th>R</th>
+                            <th>W</th>
+                            <th>Eco</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <br>
+
+            <!-- RESULT -->
+
+            <div class="info-card" id="resultCard" style="display:none;">
+
+                <h3>
+                    Match Result
+                </h3>
+
+                <div id="resultDisplay">
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="info-card" id="potmCard" style="display:none;">
+
+                <h3>
+                    Player Of The Match
+                </h3>
+
+                <div id="potmDisplay">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/livescorer.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRICKET_SCORE_MASTER_create_new_match</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            🏏 CRICKET_SCORE_MASTER
+        </div>
+
+        <ul class="menu">
+            <li>
+                <a href="index.html" style="color:white;text-decoration:none;">
+                    HOME
+                </a>
+            </li>
+
+            <li class="active">
+                CREATE NEW MATCH
+            </li>
+        </ul>
+
+    </header>
+
+    <div class="hero">
+        <div class="hero-overlay">
+
+            <!-- STEP 1 -->
+
+            <div id="step1">
+
+                <div class="info-card">
+
+                    <h3>Create Match</h3>
+
+                    <label style="color:#9dfc05">
+                        Match Name:-
+                    </label>
+                    <input type="text" id="matchName">
+
+                    <label style="color:#9dfc05">
+                        Team 1 Name:-
+                    </label>
+                    <input type="text" id="team1Name">
+
+                    <label style="color:#9dfc05">
+                        Team 2 Name:-
+                    </label>
+                    <input type="text" id="team2Name">
+
+                    <label style="color:#9dfc05">
+                        Overs Per Innings:-
+                    </label>
+                    <input type="number" id="overs" min="1">
+
+                </div>
+
+                <div class="overview-grid" style="margin-top:20px;">
+
+                    <div class="info-card">
+
+                        <h3 id="team1Title">
+                            Team 1 Playing XI
+                        </h3>
+
+                        <div id="team1Players"></div>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3 id="team2Title">
+                            Team 2 Playing XI
+                        </h3>
+
+                        <div id="team2Players"></div>
+
+                    </div>
+
+                </div>
+
+                <div style="margin-top:20px;text-align:center;">
+
+                    <button class="tab-btn" id="nextBtn">
+                        NEXT
+                    </button>
+
+                </div>
+
+                <p id="errorMessage" style="color:red;text-align:center;margin-top:10px;">
+                </p>
+
+            </div>
+
+            <!-- STEP 2 -->
+
+            <div id="step2" style="display:none;margin-top:20px;">
+
+                <div class="overview-grid">
+
+                    <div class="info-card">
+                        <h3>Team 1 Captain</h3>
+                        <div id="team1Captain"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Team 1 Wicket Keeper</h3>
+                        <div id="team1WK"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Team 2 Captain</h3>
+                        <div id="team2Captain"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Team 2 Wicket Keeper</h3>
+                        <div id="team2WK"></div>
+                    </div>
+
+                </div>
+
+                <div class="info-card" style="margin-top:20px;">
+
+                    <h3>Who Will Bat First?</h3>
+
+                    <div id="battingTeamBtns"></div>
+
+                </div>
+
+                <div class="overview-grid" style="margin-top:20px;">
+
+                    <div class="info-card">
+
+                        <h3>Striker</h3>
+
+                        <div id="strikerDiv"></div>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>Non-Striker</h3>
+
+                        <div id="nonStrikerDiv"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="info-card" style="margin-top:20px;">
+
+                    <h3>First Bowler</h3>
+
+                    <div id="bowlerDiv"></div>
+
+                </div>
+
+                <div style="text-align:center;margin-top:20px;">
+
+                    <button class="tab-btn" id="finalBtn">
+
+                        START MATCH
+
+                    </button>
+
+                </div>
+
+                <p id="step2Error" style="color:red;text-align:center;margin-top:10px;">
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

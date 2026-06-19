@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRICKET_SCORE_MASTER</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="logo">
+            🏏 CRICKET_SCORE_MASTER
+        </div>
+        <nav>
+
+            <ul class="menu">
+                <li class="active">HOME</li>
+                <li class="nav-item">
+                    <a href="#" onclick="toggleSeries(event)">SERIES</a>
+
+                    <div id="seriesMenu" class="series-menu">
+                        <h3>Current Series</h3>
+                        <p>India vs Australia (ODI)</p>
+                        <h3>Upcoming Series</h3>
+                        <p>India vs Australia (T20) - 15/6/2026 TO 30/6/2026</p>
+                        <p> England vs Pakistan (ODI) - 4/7/2026 TO 20/7/2026</p>
+                        <p> South Africa vs New Zealand (TEST) - 6/7/2026 TO 8/8/2026 </p>
+                        <H3>Previous Series</H3>
+                        <p> India vs Australia (test) - IND 2 - 2 AUS </p>
+                        <p> Afganisthan vs Pakistan (t20) - AFG 3 - 0 PAK</p>
+                        <p> West Indies vs England (t20) - WI 2 - 1 ENG</p>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" onclick="toggleSquad(event)">SQUAD</a>
+                    <div id="squadMenu" class="series-menu">
+
+                        <DIV>
+                            <H3>SQUAD OF INDIA </H3>
+                            <H5>BATSMAN</H5>
+                            <UL>
+                                <LI>ROHIT SHARMA - C </LI>
+                                <LI>VIRAT KOHLI </LI>
+                                <LI>SHUBMAN GILL </LI>
+                                <LI>YASHASVI JAISWAL</LI>
+                                <LI>SHREYASH IYER </LI>
+                                <LI>KL RAHUL - WK</LI>
+                                <LI>RISHAB PANT - WK</LI>
+                            </UL>
+                            <H5>BOWLER</H5>
+                            <UL>
+                                <LI> JASPRIT BUMRAH</LI>
+                                <LI> MOHAMMED SHAMI</LI>
+                                <LI> MOHAMMED SIRAJ</LI>
+                                <LI> KULDEEP YADAV</LI>
+                                <LI> BHUVNESHWAR KUMAR</LI>
+                            </UL>
+                            <H5>ALL ROUNDER</H5>
+                            <UL>
+                                <LI>RAVINDRA JADEJA - VC</LI>
+                                <LI> HARDIK PANDYA</LI>
+                                <LI> AXAR PATEL</LI>
+                            </UL>
+                        </DIV>
+                        <DIV>
+                            <H3>SQUAD OF AUSTRALIA</H3>
+
+                            <H5>BATTER</H5>
+                            <UL>
+                                <LI>DAVID WARNER</LI>
+                                <LI>STEVE SMITH - VC</LI>
+                                <LI>MARNUS LABUSCHAGNE</LI>
+                                <LI>JOSH INGLISH - WK</LI>
+                                <LI>ALEX CAREY - WK</LI>
+                            </UL>
+                            <H5>BOWLER</H5>
+                            <UL>
+                                <LI>MITCHELL STARC</LI>
+                                <LI>JOSH HAZELWOOD</LI>
+                                <LI>ADAM ZAMPA</LI>
+                                <LI>XAVIER BARTLETT </LI>
+                                <LI>NATHAN ELIS </LI>
+                            </UL>
+                            <H5>ALL ROUNDER</H5>
+                            <UL>
+                                <LI>TRAVIS HEAD </LI>
+                                <LI>GLENN MAXWELL</LI>
+                                <LI>PAT CUMMINS</LI>
+                                <LI>MITCHELL MARSH</LI>
+                                <LI>COOPER CONOLY</LI>
+                            </UL>
+                        </DIV>
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="toggleRANKINGS(event)">ODI RANKINGS</a>
+                    <div id="rankingsMenu" class="series-menu">
+                        <H3>ODI RANKINGS</H3>
+                        <H5>TEAM RANKINGS</H5>
+                        <TABLE border="1">
+                            <thead>
+                                <tr>
+                                    <th>TEAM NAME</th>
+                                    <th>POINTS</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>INDIA</td>
+                                <TD>118</TD>
+
+                            </tr>
+                            <TR>
+                                <TD>NEW ZEALAND</TD>
+                                <TD>112</TD>
+                            </TR>
+                            <tr>
+                                <TD>AUSTRALIA</TD>
+                                <TD>109</TD>
+                            </tr>
+                        </TABLE>
+                        <H5>BATTER RANKINGS</H5>
+                        <table>
+                            <TR>
+                                <TH>PLAYER NAME</TH>
+                                <TH>POINTS</TH>
+                            </TR>
+                            <tr>
+                                <td>ROHIT SHARMA</td>
+                                <TD>897</TD>
+                            </tr>
+                            <TR>
+                                <TD>DARYL MITCHELL</TD>
+                                <TD>854</TD>
+                            </TR>
+                            <TR>
+                                <TD>VIRAT KOHLI</TD>
+                                <TD>850</TD>
+                            </TR>
+                        </table>
+                        <h5>BOWLER RANKINGS</h5>
+                        <table>
+                            <TR>
+                                <TH>PLAYER NAME</TH>
+                                <TH>POINTS</TH>
+                            </TR>
+                            <TR>
+                                <TD>RASHID KHAN</TD>
+                                <TD>701</TD>
+                            </TR>
+                            <TR>
+                                <TD>MOHAMMED SHAMI</TD>
+                                <TD>689</TD>
+                            </TR>
+                            <TR>
+                                <TD>ADIL RASHID </TD>
+                                <TD>681</TD>
+                            </TR>
+                        </table>
+                        <H5>ALL ROUNDER RANKINGS</H5>
+
+                        <TABLE>
+                            <TR>
+                                <TH>PLAYER NAME</TH>
+                                <TH> POINTS </TH>
+
+                            </TR>
+                            <TR>
+                                <TD>RAVINDRA JADEJA</TD>
+                                <TD>345</TD>
+                            </TR>
+                            <TR>
+                                <TD>AZMATULLAH OMARZAI</TD>
+                                <TD>342</TD>
+                            </TR>
+                            <TR>
+                                <TD>RASHID KHAN</TD>
+                                <TD>330</TD>
+                            </TR>
+                        </table>
+                <li><a href="SCORER.HTML" class="pyq">CREATE NEW MATCH</a></li>
+
+                </div>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+
+        <div class="hero-overlay">
+
+
+
+            <div class="live-badge">LIVE</div>
+
+            <div class="match-header">
+
+
+
+                <div class="match-title">
+                    INDIA <span>vs</span> AUSTRALIA
+                </div>
+
+
+            </div>
+
+            <div class="series-title">
+                ODI SERIES • 3RD ODI
+            </div>
+            <br>
+
+            <div class="scoreboard">
+
+
+
+                <!-- Batters -->
+                <div class="batters">
+                    <div class="batter">
+                        <span class="name">Virat Kohli ★</span>
+                        <span class="runs">82 (61)</span>
+                    </div>
+
+                    <div class="batter">
+                        <span class="name">KL Rahul</span>
+                        <span class="runs">44 (40)</span>
+                    </div>
+                </div>
+
+                <!-- Center Score Box -->
+                <div class="center-box">
+
+                    <div class="match">
+                        AUS v<B>IND</B>
+                    </div>
+
+                    <div class="score-pill">
+                        244-4
+                    </div>
+
+                    <div class="overs">
+                        35.2 Overs
+                    </div>
+
+                    <div class="pp">
+                        PP1
+                    </div>
+
+                </div>
+
+                <!-- Right Section -->
+                <div class="right-panel">
+
+                    <div class="bowler">
+                        <strong>Starc</strong><br>
+                        2-30 (6.2)
+                    </div>
+
+                    <div class="this-over">
+
+                        <span class="ball">0</span>
+                        <span class="ball">1</span>
+                        <span class="ball"></span>
+                        <span class="ball"></span>
+                        <span class="ball"></span>
+                        <span class="ball"></span>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tabs">
+
+                <button class="tab-btn active-tab" onclick="showTab('overview')">
+                    OVERVIEW
+                </button>
+
+                <button class="tab-btn" onclick="showTab('scoreboard')">
+                    SCOREBOARD
+                </button>
+
+                <button class="tab-btn" onclick="showTab('partnership')">
+                    PARTNERSHIP
+                </button>
+
+                <button class="tab-btn" onclick="showTab('stats')">
+                    STATS
+                </button>
+
+            </div>
+
+            <div id="overview" class="tab-content active-content">
+
+                <div class="overview-grid">
+
+                    <div class="info-card">
+
+                        <h3>MATCH INFO</h3>
+
+                        <ul>
+                            <li>win percent : india-65% australia-35%</li>
+                            <li>Series : India vs Australia ODI Series</li>
+                            <li>Match : 3rd ODI</li>
+                            <li>Venue : Wankhede Stadium</li>
+                            <li>Toss : India won toss</li>
+                            <li>Status : India Batting</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>PREVIOUS MATCHES</h3>
+
+                        <p>1st ODI - AUS won by 5 wickets</p>
+                        <p>2nd ODI - IND won by 22 runs</p>
+
+                        <hr>
+                        <h3>LIVE MATCHES</h3>
+
+                        <p>3rd ODI - IND:244/4 AUS:YTB</p>
+
+                        <hr>
+                        <h3>UPCOMING MATCHES</h3>
+
+                        <p>4TH ODI</p>
+                        <p>5th ODI</p>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="scoreboard" class="tab-content">
+
+                <div class="overview-grid">
+
+                    <div class="info-card">
+
+                        <h3>INDIA BATTING</h3>
+
+                        <table class="score-table">
+
+                            <tr>
+                                <th>Batter</th>
+                                <th>R</th>
+                                <th>B</th>
+                                <th>4s</th>
+                                <th>6s</th>
+                                <th>sr</th>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/rohit.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Rohit
+                                    Sharma</td>
+                                <td>64</td>
+                                <td>42</td>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>152.23</td>
+
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/gill.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Shubman
+                                    Gill</td>
+                                <td>24</td>
+                                <td>39</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>61.53</td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/virat.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Virat
+                                    Kohli</td>
+                                <td>82</td>
+                                <td>61*</td>
+                                <td>7</td>
+                                <td>3</td>
+                                <td>134.42</td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/iyer.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">shreyash
+                                    iyer</td>
+                                <td>10</td>
+                                <td>15</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>66.66</td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/hardik.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">hardik
+                                    pandya</td>
+                                <td>17</td>
+                                <td>15</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>113.33</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="assets/rahul.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">
+                                    kl rahul
+                                </td>
+                                <td>44</td>
+                                <td>38*</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>115.78</td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <td>extras:3</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>AUSTRALIA BOWLING</h3>
+
+                        <table class="score-table">
+
+                            <tr>
+                                <th>Bowler</th>
+                                <th>O</th>
+                                <th>W</th>
+                                <th>runs</th>
+                                <th>Eco</th>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/starc.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Starc
+                                </td>
+                                <td>6.2</td>
+                                <td>2</td>
+                                <td>30</td>
+                                <td>4.73</td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/cummins.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Cummins
+                                </td>
+                                <td>6</td>
+                                <td>1</td>
+                                <td>36</td>
+                                <td>6</td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="assets/adam.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">Zampa
+                                </td>
+                                <td>8</td>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>6.25
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <img src="assets/josh.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">josh
+                                    hazlewood</td>
+                                <td>6</td>
+                                <td>0</td>
+                                <td>60</td>
+                                <td>10</td>
+
+                            </tr>
+                            <tr>
+                                <td><img src="assets/maxwell.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">glenn
+                                    maxwell</td>
+                                <td>7</td>
+                                <td>0</td>
+                                <td>49</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/head.png"
+                                        style="width:30px; height:30px; border-radius:50%; vertical-align:middle; margin-right:8px;">travis
+                                    head</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>19</td>
+                                <td>9.5</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="partnership" class="tab-content">
+
+                <div class="info-card">
+
+                    <h3>PARTNERSHIPS</h3>
+
+                    <p>🏏 Rohit + Gill → 85 Runs</p>
+                    <p>🏏 Gill + Virat → 5 Runs</p>
+                    <p>🏏 Virat + shreyash → 15 Runs</p>
+                    <p>🏏 Virat + Hardik → 33 Runs</p>
+                    <p>🏏 Virat + KL Rahul → 107 Runs*</p>
+
+                </div>
+
+            </div>
+
+            <div id="stats" class="tab-content">
+
+                <div class="overview-grid">
+
+                    <div class="info-card">
+
+                        <h3>MATCH STATS</h3>
+                        <p>win percent : India-65% Australia-35%</p>
+                        <p>Total Runs : 244</p>
+                        <p>Boundaries : 28</p>
+                        <p>fours: 18</p>
+                        <p>Sixes : 10</p>
+                        <p>Run Rate : 6.97</p>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>POWERPLAY</h3>
+
+                        <p>1-10 Overs : 68/0</p>
+
+                        <h3>LAST 5 OVERS</h3>
+                        <p>38 Runs</p>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="timeline">
+
+                <a href="odi1.html" class="timeline-item done  odi-link">1st ODI</a>
+                <a href="odi2.html" class="timeline-item done odi-link">2nd ODI</a>
+                <div class="timeline-item live">3rd ODI</div>
+                <a href="odi4.html" class="timeline-item  odi-link">4th ODI</a>
+                <a href="odi5.html" class="timeline-item  odi-link">5th ODI</a>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
