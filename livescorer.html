@@ -158,11 +158,11 @@
                 <hr>
 
                 <p id="lastOverDisplay">
-                    Last Over : -
+                    Last 6 Balls : -
                 </p>
 
                 <p id="last5OversDisplay">
-                    Last 5 Overs : -
+                    Last 30 Balls : -
                 </p>
 
                 <p id="predictedScoreDisplay">
@@ -250,6 +250,9 @@
                         UNDO
                     </button>
 
+                    <button onclick="endInnings()">
+                        END INNINGS
+                    </button>
                 </div>
 
             </div>
@@ -272,7 +275,7 @@
                     Wicket Type
                 </label>
 
-                <select id="wicketType">
+                <select id="wicketType" onchange="wicketTypeChanged()">
 
                     <option value="">
                         Select Wicket Type
@@ -348,6 +351,29 @@
 
             </div>
 
+            <div class="info-card" id="secondInningsPanel" style="display:none;margin-top:20px;">
+
+                <h3>
+                    Start 2nd Innings
+                </h3>
+
+                <select id="secondStriker"></select>
+
+                <br><br>
+
+                <select id="secondNonStriker"></select>
+
+                <br><br>
+
+                <select id="secondBowler"></select>
+
+                <br><br>
+
+                <button onclick="startSecondInnings()">
+                    START 2ND INNINGS
+                </button>
+
+            </div>
             <br>
 
             <!-- BATTING SCORECARD -->
