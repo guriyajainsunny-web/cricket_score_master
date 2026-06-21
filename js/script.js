@@ -141,6 +141,7 @@ function toggleRANKINGS(event) {
     document.getElementById("rankingsMenu")
         .classList.toggle("show");
 }
+
 // ==========================
 // CREATE PLAYING XI INPUTS
 // ==========================
@@ -707,17 +708,4 @@ function startMatch() {
     );
 
     window.location.href = "livescorer.html";
-
-
-    localStorage.setItem(
-        "matchConfig",
-        JSON.stringify(
-            matchConfig
-        )
-    );
-
-    window.location.href = "livescorer.html";
 }
-
-
-//frhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrryyyyyyyyryghyutrgghtr7hgurhguthugughruthguitrhguhreuthggotriuo

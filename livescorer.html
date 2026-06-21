@@ -133,9 +133,9 @@
 
                 <div class="right-panel">
 
-                    <div class="bowler" id="bowlerDisplay">
-                        Bowler
-                    </div>
+                    <span id="bowlerDisplay">Bowler</span>
+                    <br>
+                    <span id="bowlerFigures">0-0</span>
 
                 </div>
 
@@ -161,18 +161,6 @@
                     Last 6 Balls : -
                 </p>
 
-                <p id="last5OversDisplay">
-                    Last 30 Balls : -
-                </p>
-
-                <p id="predictedScoreDisplay">
-                    Predicted Score : -
-                </p>
-
-                <p id="winPercentDisplay">
-                    Live Win % : -
-                </p>
-
                 <hr>
 
                 <div id="secondInningsInfo" style="display:none;">
@@ -191,10 +179,6 @@
 
                     <p id="needDisplay">
                         Need : -
-                    </p>
-
-                    <p id="oversRemainingDisplay">
-                        Overs Remaining : -
                     </p>
 
                 </div>
@@ -226,40 +210,22 @@
                     <button onclick="addRuns(5)">5</button>
                     <button onclick="addRuns(6)">6</button>
 
-                    <button onclick="showWideOptions()">
+                    <button onclick="addWide()">
                         WD
                     </button>
 
-                    <button onclick="showNoBallOptions()">
+                    <button onclick="addNoBall()">
                         NB
-                    </button>
-
-                    <button onclick="showByeOptions()">
-                        BYE
-                    </button>
-
-                    <button onclick="showLegByeOptions()">
-                        LB
                     </button>
 
                     <button onclick="wicket()">
                         WICKET
                     </button>
 
-                    <button onclick="undoBall()">
-                        UNDO
-                    </button>
-
                     <button onclick="endInnings()">
                         END INNINGS
                     </button>
                 </div>
-
-            </div>
-
-            <!-- EXTRA OPTIONS -->
-
-            <div class="info-card" id="extraOptions" style="display:none;margin-top:20px;">
 
             </div>
 
@@ -356,17 +322,14 @@
                 <h3>
                     Start 2nd Innings
                 </h3>
-
+                <label>Striker</label>
                 <select id="secondStriker"></select>
 
-                <br><br>
-
+                <label>Non-Striker</label>
                 <select id="secondNonStriker"></select>
 
-                <br><br>
-
+                <label>Bowler</label>
                 <select id="secondBowler"></select>
-
                 <br><br>
 
                 <button onclick="startSecondInnings()">
@@ -376,104 +339,171 @@
             </div>
             <br>
 
-            <!-- BATTING SCORECARD -->
+            <!-- SCOREBOARD SECTION -->
 
             <div class="info-card">
 
-                <h3>
-                    Batting Scorecard
-                </h3>
+                <div style="
+        display:flex;
+        gap:10px;
+        margin-bottom:15px;
+    ">
 
-                <table id="battingTable">
+                    <button style="flex:1" onclick="showInnings(1)">
+                        1st Innings
+                    </button>
 
-                    <thead>
-
-                        <tr>
-
-                            <th>Batter</th>
-                            <th>Dismissal</th>
-                            <th>R</th>
-                            <th>B</th>
-                            <th>4s</th>
-                            <th>6s</th>
-                            <th>SR</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <br>
-
-            <!-- PARTNERSHIP -->
-
-            <div class="info-card">
-
-                <h3>
-                    Partnership
-                </h3>
-
-                <div id="partnershipDisplay">
-                    0 (0)
-                </div>
-
-            </div>
-
-            <br>
-
-            <!-- FALL OF WICKETS -->
-
-            <div class="info-card">
-
-                <h3>
-                    Fall Of Wickets
-                </h3>
-
-                <div id="fowDisplay">
+                    <button style="flex:1" onclick="showInnings(2)">
+                        2nd Innings
+                    </button>
 
                 </div>
 
-            </div>
+                <!-- 1ST INNINGS -->
 
-            <br>
+                <div id="innings1Content">
 
-            <!-- BOWLING SCORECARD -->
+                    <h3>
+                        1st Innings
+                    </h3>
 
-            <div class="info-card">
+                    <div id="innings1Score">
+                        Score
+                    </div>
 
-                <h3>
-                    Bowling Scorecard
-                </h3>
+                    <br>
 
-                <table id="bowlingTable">
+                    <h4>
+                        Batting Scorecard
+                    </h4>
 
-                    <thead>
+                    <table id="innings1BattingTable">
 
-                        <tr>
+                        <thead>
 
-                            <th>Bowler</th>
-                            <th>O</th>
-                            <th>M</th>
-                            <th>R</th>
-                            <th>W</th>
-                            <th>Eco</th>
+                            <tr>
 
-                        </tr>
+                                <th>Batter</th>
+                                <th>Dismissal</th>
+                                <th>R</th>
+                                <th>B</th>
+                                <th>4s</th>
+                                <th>6s</th>
+                                <th>SR</th>
 
-                    </thead>
+                            </tr>
 
-                    <tbody>
+                        </thead>
 
-                    </tbody>
+                        <tbody>
 
-                </table>
+                        </tbody>
+
+                    </table>
+
+                    <br>
+
+                    <h4>
+                        Bowling Scorecard
+                    </h4>
+
+                    <table id="innings1BowlingTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Bowler</th>
+                                <th>O</th>
+
+                                <th>R</th>
+                                <th>W</th>
+                                <th>Eco</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- 2ND INNINGS -->
+
+                <div id="innings2Content" style="display:none;">
+
+                    <h3>
+                        2nd Innings
+                    </h3>
+
+                    <div id="innings2Score">
+                        Score
+                    </div>
+
+                    <br>
+
+                    <h4>
+                        Batting Scorecard
+                    </h4>
+
+                    <table id="battingTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Batter</th>
+                                <th>Dismissal</th>
+                                <th>R</th>
+                                <th>B</th>
+                                <th>4s</th>
+                                <th>6s</th>
+                                <th>SR</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+                    <br>
+
+                    <h4>
+                        Bowling Scorecard
+                    </h4>
+
+                    <table id="bowlingTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Bowler</th>
+                                <th>O</th>
+                                <th>M</th>
+                                <th>R</th>
+                                <th>W</th>
+                                <th>Eco</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </div>
 
@@ -494,19 +524,19 @@
             </div>
 
             <br>
-
-            <div class="info-card" id="potmCard" style="display:none;">
+            <div class="info-card">
 
                 <h3>
-                    Player Of The Match
+                    Ball By Ball Commentary
                 </h3>
 
-                <div id="potmDisplay">
+                <div id="commentaryBox">
+
+                    Match Started...
 
                 </div>
 
             </div>
-
         </div>
 
     </section>

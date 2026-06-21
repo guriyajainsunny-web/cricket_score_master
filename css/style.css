@@ -593,16 +593,9 @@ H6 {
     color: white;
 }
 
-/*==============================================*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 /* Main Bar */
 .scoreboard {
+    width:100%;
     max-width: 1200px;
     margin: auto;
 
@@ -764,3 +757,132 @@ H6 {
 }
 
 /*yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyykkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk*/
+
+.inningsTabs {
+
+    display: flex;
+
+    margin-bottom: 15px;
+
+}
+
+.inningsTabs button {
+
+    flex: 1;
+
+    height: 45px;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+button {
+
+    background: #9dfc05;
+
+    color: #000;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+button:hover {
+
+    transform: scale(1.03);
+
+}
+
+select {
+
+    cursor: pointer;
+
+    width: 100%;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    margin-top: 5px;
+
+    background: #071827;
+
+    color: white;
+
+}
+
+#commentaryBox {
+
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    line-height: 1.8;
+
+    padding: 10px;
+
+    background: #071827;
+
+    border-radius: 10px;
+
+}
+
+#resultDisplay {
+
+    font-size: 22px;
+
+    text-align: center;
+
+    color: #9dfc05;
+
+    font-weight: 700;
+
+}
+
+table {
+
+    font-size: 13px;
+
+}
+
+.info-card {
+
+    overflow-x: auto;
+
+}
+
+#wicketPanel,
+#newBowlerPanel,
+#secondInningsPanel {
+
+    border: 2px solid #9dfc05;
+
+}
+
+tbody tr:nth-child(even){
+    background:rgba(255,255,255,.03);
+}
+
+#wicketPanel,
+#newBowlerPanel,
+#secondInningsPanel {
+
+    margin-top: 20px;
+
+    box-shadow: 0 0 15px rgba(157,252,5,.25);
+
+}
+
