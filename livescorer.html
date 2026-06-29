@@ -188,19 +188,18 @@
             <br>
 
             <!-- SCORING BUTTONS -->
-
-            <div class="info-card">
+            <div class="info-card" id="scoringCard">
 
                 <h3>
                     Scoring Buttons
                 </h3>
 
                 <div style="
-                    display:flex;
-                    flex-wrap:wrap;
-                    gap:10px;
-                    justify-content:center;
-                ">
+                 display:flex;
+                 flex-wrap:wrap;
+                 gap:10px;
+                 justify-content:center;
+                 ">
 
                     <button onclick="addRuns(0)">0</button>
                     <button onclick="addRuns(1)">1</button>
@@ -210,24 +209,42 @@
                     <button onclick="addRuns(5)">5</button>
                     <button onclick="addRuns(6)">6</button>
 
-                    <button onclick="addWide()">
-                        WD
-                    </button>
+                    <button onclick="addWide()">WD</button>
 
-                    <button onclick="addNoBall()">
-                        NB
-                    </button>
-                    <button onclick="wicket()">
-                        WICKET
-                    </button>
+                    <button onclick="addNoBall()">NB</button>
+
+                    <button onclick="wicket()">WICKET</button>
 
                     <button onclick="endInnings()">
                         END INNINGS
                     </button>
+
                 </div>
 
             </div>
+            <div class="info-card" id="potmCard" style="display:none;">
 
+                <h3>
+                    Player Of The Match
+                </h3>
+
+                <label>
+
+                    Select Player
+
+                </label>
+
+                <select id="potmSelect">
+
+                </select>
+
+                <br><br>
+
+                <button id="saveMatchBtn" onclick="saveMatch()">
+                    SAVE MATCH
+                </button>
+
+            </div>
             <!-- WICKET PANEL -->
 
             <div class="info-card" id="wicketPanel" style="display:none;margin-top:20px;">
@@ -535,6 +552,59 @@
 
                 </div>
 
+            </div>
+            <div class="info-card" id="leaderboardCard" style="display:none;">
+                <h3>🏆 Leaderboard</h3>
+
+                <h4>Top Batters</h4>
+                <table id="leaderboardBatting">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Rank</th>
+                            <th>Batter</th>
+                            <th>R</th>
+                            <th>B</th>
+                            <th>4s</th>
+                            <th>6s</th>
+                            <th>SR</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+                <br>
+
+                <h4>Top Bowlers</h4>
+                <table id="leaderboardBowling">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Rank</th>
+                            <th>Bowler</th>
+                            <th>W</th>
+                            <th>O</th>
+                            <th>Eco</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
             </div>
         </div>
 
