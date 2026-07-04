@@ -442,8 +442,11 @@ function wicket() {
 
     document.getElementById("wicketPanel").style.display = "block";
 
-    let fielderSelect = document.getElementById("fielderSelect");
-    let newBatsmanSelect = document.getElementById("newBatsmanSelect");
+    let fielderSelect =
+        document.getElementById("fielderSelect");
+
+    let newBatsmanSelect =
+        document.getElementById("newBatsmanSelect");
 
     fielderSelect.innerHTML = "";
     newBatsmanSelect.innerHTML = "";
@@ -456,7 +459,9 @@ function wicket() {
     fielders.forEach(player => {
 
         fielderSelect.innerHTML +=
-            `<option value="${player}">${player}</option>`;
+            `<option value="${player}">
+                ${player}
+            </option>`;
 
     });
 
@@ -465,19 +470,216 @@ function wicket() {
             ? matchConfig.team1Players
             : matchConfig.team2Players;
 
+    let unavailable = [
+        striker,
+        nonStriker,
+        ...outPlayers
+    ];
+
     batters.forEach(player => {
 
-        if (
-            player !== striker &&
-            player !== nonStriker &&
-            !outPlayers.includes(player)
-        ) {
+        if (!unavailable.includes(player)) {
 
             newBatsmanSelect.innerHTML +=
-                `<option value="${player}">${player}</option>`;
+                `<option value="${player}">
+                    ${player}
+                </option>`;
+
         }
 
     });
+
+}
+
+function confirmWicket() {
+
+    let type =
+        document.getElementById("wicketType").value;
+
+    let fielder =
+        document.getElementById("fielderSelect").value;
+
+    let newBatsman =
+        document.getElementById("newBatsmanSelect").value;
+
+    if (type === "") {
+
+        alert("Select wicket type");
+
+        return;
+
+    }
+
+    wickets++;
+    legalBalls++;
+
+    lastOverBalls.push("W");
+
+    if (lastOverBalls.length > 6) {
+
+        lastOverBalls.shift();
+
+    }
+
+    battingStats[striker].balls++;
+
+    bowlingStats[currentBowler].balls++;
+    bowlingStats[currentBowler].wickets++;
+
+    let dismissal = "";
+
+    if (type === "Bowled") {
+
+        dismissal = "b " + currentBowler;
+
+    }
+
+    if (type === "LBW") {
+
+        dismissal = "lbw b " + currentBowler;
+
+    }
+
+    if (type === "Caught") {
+
+        dismissal =
+            "c " + fielder +
+            " b " + currentBowler;
+
+    }
+
+    if (type === "Run Out") {
+
+        dismissal =
+            "run out (" + fielder + ")";
+
+    }
+
+    if (type === "Stumped") {
+
+        let keeper =
+            bowlingTeam === matchConfig.team1
+                ? matchConfig.team1WK
+                : matchConfig.team2WK;
+
+        dismissal =
+            "st " + keeper +
+            " b " + currentBowler;
+
+    }
+
+    outPlayers.push(striker);
+
+    battingStats[striker].dismissal =
+        dismissal;
+
+    addCommentary(
+        getOvers() +
+        " : WICKET - " +
+        striker
+    );
+
+    document.getElementById(
+        "wicketPanel"
+    ).style.display = "none";
+
+    updateLastOver();
+
+    // ---------- INNINGS ENDED ----------
+
+    if (
+        wickets >= 10 ||
+        legalBalls >= matchConfig.overs * 6
+    ) {
+
+        updateScoreboard();
+        updateBattingTable();
+        updateBowlingTable();
+
+        scoringLocked = false;
+
+        if (innings === 1) {
+
+            endInnings();
+
+        } else {
+
+            updateChaseInfo();
+
+            checkResult();
+
+        }
+
+        return;
+
+    }
+
+    // ---------- NEW BATSMAN COMES FIRST ----------
+
+    if (!newBatsman) {
+
+        scoringLocked = false;
+
+        if (innings === 1) {
+
+            endInnings();
+
+        } else {
+
+            updateChaseInfo();
+
+            checkResult();
+
+        }
+
+        return;
+
+    }
+
+    striker = newBatsman;
+
+    battingOrder.push(striker);
+
+    document.getElementById(
+        "strikerName"
+    ).textContent =
+        striker + " ★";
+
+    updateScoreboard();
+    updateBattingTable();
+    updateBowlingTable();
+
+    if (innings === 2) {
+
+        updateChaseInfo();
+
+        checkResult();
+
+        if (inningsEnded) {
+
+            return;
+
+        }
+
+    }
+
+    // ---------- OVER COMPLETED ----------
+
+    if (legalBalls % 6 === 0) {
+
+        rotateStrike();
+
+        addCommentary(
+            "---- Over Completed ----"
+        );
+
+        overCompleted();
+
+        return;
+
+    }
+
+    scoringLocked = false;
 
 }
 
@@ -500,127 +702,14 @@ function wicketTypeChanged() {
 
 }
 
-function confirmWicket() {
-
-    let type =
-        document.getElementById("wicketType").value;
-
-    let fielder =
-        document.getElementById("fielderSelect").value;
-
-    let newBatsman =
-        document.getElementById("newBatsmanSelect").value;
-
-    if (type === "") {
-        alert("Select wicket type");
-        return;
-    }
-
-    wickets++;
-    legalBalls++;
-
-    lastOverBalls.push("W");
-
-    if (lastOverBalls.length > 6) {
-        lastOverBalls.shift();
-    }
+function overCompleted() {
 
     if (
-        wickets !== 10 &&
-        legalBalls % 6 === 0
+        inningsEnded ||
+        scoringLocked && legalBalls === 0
     ) {
-
-        rotateStrike();
-
-        addCommentary(
-            "---- Over Completed ----"
-        );
-
-        overCompleted();
-
-    }
-
-    battingStats[striker].balls++;
-
-    bowlingStats[currentBowler].balls++;
-    bowlingStats[currentBowler].wickets++;
-
-    let dismissal = "";
-
-    if (type === "Bowled") {
-        dismissal = "b " + currentBowler;
-    }
-
-    if (type === "LBW") {
-        dismissal = "lbw b " + currentBowler;
-    }
-
-    if (type === "Caught") {
-        dismissal =
-            "c " + fielder +
-            " b " + currentBowler;
-    }
-
-    if (type === "Run Out") {
-        dismissal =
-            "run out (" + fielder + ")";
-    }
-
-    if (type === "Stumped") {
-
-        let keeper =
-            bowlingTeam === matchConfig.team1
-                ? matchConfig.team1WK
-                : matchConfig.team2WK;
-
-        dismissal =
-            "st " + keeper +
-            " b " + currentBowler;
-    }
-    outPlayers.push(striker);
-
-    battingStats[striker].dismissal =
-        dismissal;
-
-    addCommentary(
-        getOvers() +
-        " : WICKET - " +
-        striker
-    );
-
-    document.getElementById("wicketPanel").style.display =
-        "none";
-
-    updateLastOver();
-    updateScoreboard();
-    updateBattingTable();
-    updateBowlingTable();
-
-    if (innings === 1 && wickets >= 10) {
-
-        scoringLocked = false;
-        endInnings();
         return;
-
     }
-
-    striker = newBatsman;
-
-    battingOrder.push(newBatsman);
-
-    document.getElementById("strikerName").textContent =
-        striker + " ★";
-
-    scoringLocked = false;
-
-    updateScoreboard();
-    updateBattingTable();
-
-    updateChaseInfo();
-    checkResult();
-}
-
-function overCompleted() {
 
     scoringLocked = true;
 
@@ -646,15 +735,14 @@ function overCompleted() {
 
             select.innerHTML +=
                 `<option value="${player}">
-                ${player}
-            </option>`;
+                    ${player}
+                </option>`;
 
         }
 
     });
 
 }
-
 function confirmBowler() {
 
     currentBowler =
@@ -993,9 +1081,137 @@ function checkResult() {
     }
 
 }
+
 function saveMatch() {
 
+    let username =
+        document.getElementById(
+            "matchUsername"
+        ).value.trim();
+
+    let password =
+        document.getElementById(
+            "matchPassword"
+        ).value.trim();
+
+    if (username === "" || password === "") {
+
+        alert("Enter Username and Password");
+
+        return;
+
+    }
+
+    // ---------- TOP BATTER ----------
+
+    let topBatter = "";
+
+    let maxRuns = -1;
+
+    Object.keys(combinedBatting).forEach(player => {
+
+        if (combinedBatting[player].balls > 0 &&
+            combinedBatting[player].runs > maxRuns) {
+
+            maxRuns = combinedBatting[player].runs;
+
+            topBatter =
+                player + " - " +
+                combinedBatting[player].runs +
+                " (" +
+                combinedBatting[player].balls +
+                ")";
+
+        }
+
+    });
+
+    // ---------- TOP BOWLER ----------
+
+    let combinedBowling = {};
+
+    Object.keys(firstInningsBowling).forEach(player => {
+
+        combinedBowling[player] = {
+
+            wickets: firstInningsBowling[player].wickets,
+
+            balls: firstInningsBowling[player].balls,
+
+            runs: firstInningsBowling[player].runs
+
+        };
+
+    });
+
+    Object.keys(bowlingStats).forEach(player => {
+
+        if (!combinedBowling[player]) {
+
+            combinedBowling[player] = {
+
+                wickets: 0,
+                balls: 0,
+                runs: 0
+
+            };
+
+        }
+
+        combinedBowling[player].wickets +=
+            bowlingStats[player].wickets;
+
+        combinedBowling[player].balls +=
+            bowlingStats[player].balls;
+
+        combinedBowling[player].runs +=
+            bowlingStats[player].runs;
+
+    });
+
+    let topBowler = "";
+
+    let maxWickets = -1;
+
+    Object.keys(combinedBowling).forEach(player => {
+
+        if (
+            combinedBowling[player].wickets > maxWickets
+        ) {
+
+            maxWickets =
+                combinedBowling[player].wickets;
+
+            let overs =
+                Math.floor(
+                    combinedBowling[player].balls / 6
+                ) +
+                "." +
+                (
+                    combinedBowling[player].balls % 6
+                );
+
+            topBowler =
+                player +
+                " - " +
+                combinedBowling[player].wickets +
+                "/" +
+                combinedBowling[player].runs +
+                " (" +
+                overs +
+                ")";
+
+        }
+
+    });
+
+    // ---------- MATCH OBJECT ----------
+
     let matchData = {
+
+        username: username,
+
+        password: password,
 
         matchName: matchConfig.matchName,
 
@@ -1003,43 +1219,62 @@ function saveMatch() {
 
         team2: matchConfig.team2,
 
-        firstInnings: {
-            team:
-                battingTeam === matchConfig.team2
-                    ? matchConfig.team1
-                    : matchConfig.team2,
-
-            score: firstInningsScore
-        },
-
-        secondInnings: {
-            team: battingTeam,
-
-            score: score
-        },
-
-        winner:
-            score >= target
-                ? battingTeam
-                : bowlingTeam,
-
         result:
-            score >= target
-                ? battingTeam +
-                " won by " +
-                (10 - wickets) +
-                " wickets"
+            document.getElementById(
+                "resultDisplay"
+            ).textContent,
 
-                : bowlingTeam +
-                " won by " +
-                (target - score - 1) +
-                " runs"
+        firstInningsScore:
+            document.getElementById(
+                "innings1Score"
+            ).textContent,
+
+        secondInningsScore:
+            document.getElementById(
+                "innings2Score"
+            ).textContent,
+
+        playerOfTheMatch:
+            document.getElementById(
+                "potmSelect"
+            ).value,
+
+        topBatter: topBatter,
+
+        topBowler: topBowler,
+
+        firstInningsBatting:
+            firstInningsBatting,
+
+        firstInningsBowling:
+            firstInningsBowling,
+
+        secondInningsBatting:
+            battingStats,
+
+        secondInningsBowling:
+            bowlingStats
 
     };
 
-    console.log(matchData);
+    // ---------- DATABASE ----------
+
+    let database =
+        JSON.parse(
+            localStorage.getItem(
+                "matchDatabase"
+            )
+        ) || [];
+
+    database.push(matchData);
+
+    localStorage.setItem(
+        "matchDatabase",
+        JSON.stringify(database)
+    );
 
     alert("Match Saved Successfully");
+
     document.getElementById(
         "saveMatchBtn"
     ).disabled = true;
@@ -1047,7 +1282,9 @@ function saveMatch() {
     document.getElementById(
         "saveMatchBtn"
     ).textContent = "MATCH SAVED";
+
 }
+
 function showLeaderboard() {
 
     let combinedBatting = {};

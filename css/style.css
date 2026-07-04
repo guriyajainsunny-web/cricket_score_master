@@ -595,7 +595,7 @@ H6 {
 
 /* Main Bar */
 .scoreboard {
-    width:100%;
+    width: 100%;
     max-width: 1200px;
     margin: auto;
 
@@ -872,8 +872,8 @@ table {
 
 }
 
-tbody tr:nth-child(even){
-    background:rgba(255,255,255,.03);
+tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, .03);
 }
 
 #wicketPanel,
@@ -882,7 +882,24 @@ tbody tr:nth-child(even){
 
     margin-top: 20px;
 
-    box-shadow: 0 0 15px rgba(157,252,5,.25);
+    box-shadow: 0 0 15px rgba(157, 252, 5, .25);
 
 }
 
+#potmCard input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    margin-top: 5px;
+
+    background: #071827;
+
+    color: white;
+
+}
