@@ -1081,7 +1081,6 @@ function checkResult() {
     }
 
 }
-
 function saveMatch() {
 
     let username =
@@ -1102,6 +1101,45 @@ function saveMatch() {
 
     }
 
+    // ---------- COMBINED BATTING ----------
+
+    let combinedBatting = {};
+
+    Object.keys(firstInningsBatting).forEach(player => {
+
+        combinedBatting[player] = {
+
+            runs: firstInningsBatting[player].runs,
+            balls: firstInningsBatting[player].balls,
+            fours: firstInningsBatting[player].fours,
+            sixes: firstInningsBatting[player].sixes
+
+        };
+
+    });
+
+    Object.keys(battingStats).forEach(player => {
+
+        if (!combinedBatting[player]) {
+
+            combinedBatting[player] = {
+
+                runs: 0,
+                balls: 0,
+                fours: 0,
+                sixes: 0
+
+            };
+
+        }
+
+        combinedBatting[player].runs += battingStats[player].runs;
+        combinedBatting[player].balls += battingStats[player].balls;
+        combinedBatting[player].fours += battingStats[player].fours;
+        combinedBatting[player].sixes += battingStats[player].sixes;
+
+    });
+
     // ---------- TOP BATTER ----------
 
     let topBatter = "";
@@ -1110,13 +1148,16 @@ function saveMatch() {
 
     Object.keys(combinedBatting).forEach(player => {
 
-        if (combinedBatting[player].balls > 0 &&
-            combinedBatting[player].runs > maxRuns) {
+        if (
+            combinedBatting[player].balls > 0 &&
+            combinedBatting[player].runs > maxRuns
+        ) {
 
             maxRuns = combinedBatting[player].runs;
 
             topBatter =
-                player + " - " +
+                player +
+                " - " +
                 combinedBatting[player].runs +
                 " (" +
                 combinedBatting[player].balls +
@@ -1126,7 +1167,7 @@ function saveMatch() {
 
     });
 
-    // ---------- TOP BOWLER ----------
+    // ---------- COMBINED BOWLING ----------
 
     let combinedBowling = {};
 
@@ -1135,9 +1176,7 @@ function saveMatch() {
         combinedBowling[player] = {
 
             wickets: firstInningsBowling[player].wickets,
-
             balls: firstInningsBowling[player].balls,
-
             runs: firstInningsBowling[player].runs
 
         };
@@ -1169,34 +1208,33 @@ function saveMatch() {
 
     });
 
+    // ---------- TOP BOWLER ----------
+
     let topBowler = "";
 
     let maxWickets = -1;
 
     Object.keys(combinedBowling).forEach(player => {
 
+        let s = combinedBowling[player];
+
         if (
-            combinedBowling[player].wickets > maxWickets
+            s.wickets > maxWickets
         ) {
 
-            maxWickets =
-                combinedBowling[player].wickets;
+            maxWickets = s.wickets;
 
             let overs =
-                Math.floor(
-                    combinedBowling[player].balls / 6
-                ) +
+                Math.floor(s.balls / 6) +
                 "." +
-                (
-                    combinedBowling[player].balls % 6
-                );
+                (s.balls % 6);
 
             topBowler =
                 player +
                 " - " +
-                combinedBowling[player].wickets +
+                s.wickets +
                 "/" +
-                combinedBowling[player].runs +
+                s.runs +
                 " (" +
                 overs +
                 ")";
@@ -1209,9 +1247,9 @@ function saveMatch() {
 
     let matchData = {
 
-        username: username,
+        username,
 
-        password: password,
+        password,
 
         matchName: matchConfig.matchName,
 
@@ -1239,15 +1277,13 @@ function saveMatch() {
                 "potmSelect"
             ).value,
 
-        topBatter: topBatter,
+        topBatter,
 
-        topBowler: topBowler,
+        topBowler,
 
-        firstInningsBatting:
-            firstInningsBatting,
+        firstInningsBatting,
 
-        firstInningsBowling:
-            firstInningsBowling,
+        firstInningsBowling,
 
         secondInningsBatting:
             battingStats,
@@ -1257,7 +1293,7 @@ function saveMatch() {
 
     };
 
-    // ---------- DATABASE ----------
+    // ---------- SAVE TO DATABASE ----------
 
     let database =
         JSON.parse(
@@ -1281,7 +1317,8 @@ function saveMatch() {
 
     document.getElementById(
         "saveMatchBtn"
-    ).textContent = "MATCH SAVED";
+    ).textContent =
+        "MATCH SAVED";
 
 }
 

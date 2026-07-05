@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        CRICKET_SCORE_MASTER - Match History
+    </title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            🏏 CRICKET_SCORE_MASTER
+
+        </div>
+
+        <ul class="menu">
+
+            <li>
+
+                <a href="index.html" style="color:white;text-decoration:none;">
+
+                    HOME
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="livescorer.html" style="color:white;text-decoration:none;">
+
+                    LIVE SCORER
+
+                </a>
+
+            </li>
+
+            <li class="active">
+
+                MY HISTORY
+
+            </li>
+
+        </ul>
+
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-overlay">
+
+            <div class="info-card">
+
+                <h2>
+
+                    Match History
+
+                </h2>
+
+                <br>
+
+                <input type="text" id="searchBox" placeholder="Search Match / Team / player" onkeyup="searchMatches()">
+
+                <br><br>
+
+                <table id="historyTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Match</th>
+
+                            <th>Team 1</th>
+
+                            <th>Team 2</th>
+
+                            <th>Result</th>
+
+                            <th>1st Inn</th>
+
+                            <th>2nd Inn</th>
+
+                            <th>POTM</th>
+
+                            <th>Top Batter</th>
+
+                            <th>Top Bowler</th>
+
+                            <th>View</th>
+
+                            <th>Delete</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/history.js"></script>
+
+</body>
+
+</html>
