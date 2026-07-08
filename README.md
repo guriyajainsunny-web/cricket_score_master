@@ -34,8 +34,6 @@ A modern cricket scoring application built using HTML, CSS and JavaScript with l
 
 ## 📂 Project Structure
 
-## 📂 Project Structure
-
 ```
 CRICKET_SCORE_MASTER
 │
