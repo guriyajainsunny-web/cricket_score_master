@@ -10,9 +10,6 @@ let match =
 
     );
 
-console.log(match);
-console.log(match.firstInningsBatting);
-
 document.getElementById(
 
     "matchTitle"

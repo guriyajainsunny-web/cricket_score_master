@@ -25,31 +25,40 @@ function showTab(tabId) {
 
 /* LIVE SCORE EFFECT */
 
-setInterval(() => {
+const score = document.querySelector(".score-box h1");
 
-    const score = document.querySelector(".score-box h1");
+if (score) {
 
-    score.style.transform = "scale(1.08)";
+    setInterval(() => {
 
-    setTimeout(() => {
-        score.style.transform = "scale(1)";
-    }, 300);
+        score.style.transform = "scale(1.08)";
 
-}, 5000);
+        setTimeout(() => {
+
+            score.style.transform = "scale(1)";
+
+        }, 300);
+
+    }, 5000);
+
+}
 
 /* LIVE BADGE BLINK */
 
-setInterval(() => {
+const live = document.querySelector(".live-badge");
 
-    const live = document.querySelector(".live-badge");
+if (live) {
 
-    if (live.style.opacity === "0.5") {
-        live.style.opacity = "1";
-    } else {
-        live.style.opacity = "0.5";
-    }
+    setInterval(() => {
 
-}, 700);
+        live.style.opacity =
+            live.style.opacity === "0.5"
+                ? "1"
+                : "0.5";
+
+    }, 700);
+
+}
 
 /* TIMELINE HOVER */
 
@@ -357,8 +366,6 @@ function createMatch() {
         "matchData",
         JSON.stringify(matchData)
     );
-
-    console.log(matchData);
 
     // ==========================
     // GO TO STEP 2
@@ -710,29 +717,29 @@ function startMatch() {
     window.location.href = "livescorer.html";
 }
 
-function updateBattingTable(){
+function updateBattingTable() {
 
-    const table=
-        innings===1
-        ? document.querySelector("#innings1BattingTable tbody")
-        : document.querySelector("#battingTable tbody");
+    const table =
+        innings === 1
+            ? document.querySelector("#innings1BattingTable tbody")
+            : document.querySelector("#battingTable tbody");
 
-    table.innerHTML="";
+    table.innerHTML = "";
 
-    Object.keys(battingStats).forEach(player=>{
+    Object.keys(battingStats).forEach(player => {
 
-        const s=battingStats[player];
+        const s = battingStats[player];
 
-        if(s.runs===0 && s.balls===0){
+        if (s.runs === 0 && s.balls === 0) {
             return;
         }
 
-        let sr=
-            s.balls===0
-            ? 0
-            : ((s.runs/s.balls)*100).toFixed(2);
+        let sr =
+            s.balls === 0
+                ? 0
+                : ((s.runs / s.balls) * 100).toFixed(2);
 
-        table.innerHTML+=`
+        table.innerHTML += `
         <tr>
             <td>${player}</td>
             <td>${s.dismissal}</td>
@@ -746,33 +753,33 @@ function updateBattingTable(){
 
 }
 
-function updateBowlingTable(){
+function updateBowlingTable() {
 
-    const table=
-        innings===1
-        ? document.querySelector("#innings1BowlingTable tbody")
-        : document.querySelector("#bowlingTable tbody");
+    const table =
+        innings === 1
+            ? document.querySelector("#innings1BowlingTable tbody")
+            : document.querySelector("#bowlingTable tbody");
 
-    table.innerHTML="";
+    table.innerHTML = "";
 
-    Object.keys(bowlingStats).forEach(player=>{
+    Object.keys(bowlingStats).forEach(player => {
 
-        const s=bowlingStats[player];
+        const s = bowlingStats[player];
 
-        if(s.balls===0 && s.runs===0){
+        if (s.balls === 0 && s.runs === 0) {
             return;
         }
 
-        let overs=
-            Math.floor(s.balls/6)+"."+
-            (s.balls%6);
+        let overs =
+            Math.floor(s.balls / 6) + "." +
+            (s.balls % 6);
 
-        let eco=
-            s.balls===0
-            ? "0.00"
-            : (s.runs/(s.balls/6)).toFixed(2);
+        let eco =
+            s.balls === 0
+                ? "0.00"
+                : (s.runs / (s.balls / 6)).toFixed(2);
 
-        table.innerHTML+=`
+        table.innerHTML += `
         <tr>
             <td>${player}</td>
             <td>${overs}</td>
@@ -784,55 +791,55 @@ function updateBowlingTable(){
 
 }
 
-function wicket(){
+function wicket() {
 
-    if(inningsEnded||scoringLocked){
+    if (inningsEnded || scoringLocked) {
         return;
     }
 
-    scoringLocked=true;
+    scoringLocked = true;
 
     document.getElementById("wicketPanel")
-        .style.display="block";
+        .style.display = "block";
 
-    const fielderSelect=
+    const fielderSelect =
         document.getElementById("fielderSelect");
 
-    const newBatsmanSelect=
+    const newBatsmanSelect =
         document.getElementById("newBatsmanSelect");
 
-    fielderSelect.innerHTML="";
-    newBatsmanSelect.innerHTML="";
+    fielderSelect.innerHTML = "";
+    newBatsmanSelect.innerHTML = "";
 
-    const fielders=
-        bowlingTeam===matchConfig.team1
-        ? matchConfig.team1Players
-        : matchConfig.team2Players;
+    const fielders =
+        bowlingTeam === matchConfig.team1
+            ? matchConfig.team1Players
+            : matchConfig.team2Players;
 
-    fielders.forEach(player=>{
+    fielders.forEach(player => {
 
-        fielderSelect.innerHTML+=
-        `<option value="${player}">
+        fielderSelect.innerHTML +=
+            `<option value="${player}">
             ${player}
         </option>`;
 
     });
 
-    const batters=
-        battingTeam===matchConfig.team1
-        ? matchConfig.team1Players
-        : matchConfig.team2Players;
+    const batters =
+        battingTeam === matchConfig.team1
+            ? matchConfig.team1Players
+            : matchConfig.team2Players;
 
-    batters.forEach(player=>{
+    batters.forEach(player => {
 
-        if(
-            player!==striker &&
-            player!==nonStriker &&
-            battingStats[player].balls===0
-        ){
+        if (
+            player !== striker &&
+            player !== nonStriker &&
+            battingStats[player].balls === 0
+        ) {
 
-            newBatsmanSelect.innerHTML+=
-            `<option value="${player}">
+            newBatsmanSelect.innerHTML +=
+                `<option value="${player}">
                 ${player}
             </option>`;
         }
@@ -841,40 +848,40 @@ function wicket(){
 
 }
 
-function wicketTypeChanged(){
+function wicketTypeChanged() {
 
-    const type=
+    const type =
         document.getElementById("wicketType").value;
 
-    if(
-        type==="Bowled" ||
-        type==="LBW"
-    ){
+    if (
+        type === "Bowled" ||
+        type === "LBW"
+    ) {
 
         document.getElementById("fielderSelect")
-            .style.display="none";
+            .style.display = "none";
 
-    }else{
+    } else {
 
         document.getElementById("fielderSelect")
-            .style.display="block";
+            .style.display = "block";
 
     }
 
 }
 
-function confirmWicket(){
+function confirmWicket() {
 
-    const type=
+    const type =
         document.getElementById("wicketType").value;
 
-    const fielder=
+    const fielder =
         document.getElementById("fielderSelect").value;
 
-    const newBatsman=
+    const newBatsman =
         document.getElementById("newBatsmanSelect").value;
 
-    if(!type || !newBatsman){
+    if (!type || !newBatsman) {
         alert("Complete wicket details");
         return;
     }
@@ -885,55 +892,55 @@ function confirmWicket(){
     bowlingStats[currentBowler].balls++;
     bowlingStats[currentBowler].wickets++;
 
-    let dismissal="";
+    let dismissal = "";
 
-    if(type==="Caught"){
-        dismissal=
-            "c "+fielder+
-            " b "+currentBowler;
+    if (type === "Caught") {
+        dismissal =
+            "c " + fielder +
+            " b " + currentBowler;
     }
 
-    if(type==="Bowled"){
-        dismissal=
-            "b "+currentBowler;
+    if (type === "Bowled") {
+        dismissal =
+            "b " + currentBowler;
     }
 
-    if(type==="LBW"){
-        dismissal=
-            "lbw b "+currentBowler;
+    if (type === "LBW") {
+        dismissal =
+            "lbw b " + currentBowler;
     }
 
-    if(type==="Run Out"){
-        dismissal=
-            "run out ("+fielder+")";
+    if (type === "Run Out") {
+        dismissal =
+            "run out (" + fielder + ")";
     }
 
-    if(type==="Stumped"){
-        dismissal=
-            "st "+fielder+
-            " b "+currentBowler;
+    if (type === "Stumped") {
+        dismissal =
+            "st " + fielder +
+            " b " + currentBowler;
     }
 
     battingStats[striker].balls++;
-    battingStats[striker].dismissal=
+    battingStats[striker].dismissal =
         dismissal;
 
     addCommentary(
-        getOvers()+
-        " : WICKET - "+
+        getOvers() +
+        " : WICKET - " +
         striker
     );
 
-    striker=newBatsman;
+    striker = newBatsman;
 
     document.getElementById("strikerName")
-        .textContent=
-        striker+" ★";
+        .textContent =
+        striker + " ★";
 
     document.getElementById("wicketPanel")
-        .style.display="none";
+        .style.display = "none";
 
-    scoringLocked=false;
+    scoringLocked = false;
 
     updateScoreboard();
     updateBattingTable();
