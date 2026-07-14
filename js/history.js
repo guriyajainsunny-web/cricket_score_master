@@ -70,56 +70,19 @@ DELETE
 
 function deleteMatch(index) {
 
-    let username =
-        prompt("Enter Username");
+    if (confirm("Are you sure you want to delete this match?")) {
 
-    if (username === null) {
-        return;
-    }
+        database.splice(index, 1);
 
-    let password =
-        prompt("Enter Password");
+        localStorage.setItem(
 
-    if (password === null) {
-        return;
-    }
+            "matchDatabase",
 
-    if (
-        username === database[index].username &&
-        password === database[index].password
-    ) {
+            JSON.stringify(database)
 
-        if (
-            confirm(
-                "Delete this Match?"
-            )
-        ) {
-
-            database.splice(index, 1);
-
-            localStorage.setItem(
-
-                "matchDatabase",
-
-                JSON.stringify(database)
-
-            );
-
-            loadHistory();
-
-            alert(
-                "Match Deleted Successfully"
-            );
-
-        }
-
-    }
-
-    else {
-
-        alert(
-            "Invalid Username or Password"
         );
+
+        loadHistory();
 
     }
 

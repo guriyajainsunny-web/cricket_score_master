@@ -1,6 +1,7 @@
-const API_KEY = "9e4f7c4ed5f043e48b7a5229ad711f9d";
+const API_KEY = "d53eca88d08ad3017cfa2101c8a85636";
+
 const URL =
-    `https://newsapi.org/v2/everything?q=("cricket" OR "ICC" OR "IPL" OR "ODI" OR "Test cricket" OR "T20" OR "virat kohli" OR "ms dhoni" OR "rohit sharma" OR "Indian cricket team" OR "australian cricket team" OR "women's cricket team" OR "cricket stadium"OR "chris gayle" OR "jacob bethell" OR "england cricket team" OR "odi worldcup" OR "vaibhav suryavanshi" OR "BBL" OR "SACHIN TENDULKAR")&language=en&sortBy=publishedAt&searchIn=title&apiKey=${API_KEY}`;
+`https://gnews.io/api/v4/search?q=cricket&lang=en&max=10&apikey=${API_KEY}`;
 
 fetch(URL)
 

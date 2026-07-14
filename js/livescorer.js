@@ -1083,24 +1083,6 @@ function checkResult() {
 }
 function saveMatch() {
 
-    let username =
-        document.getElementById(
-            "matchUsername"
-        ).value.trim();
-
-    let password =
-        document.getElementById(
-            "matchPassword"
-        ).value.trim();
-
-    if (username === "" || password === "") {
-
-        alert("Enter Username and Password");
-
-        return;
-
-    }
-
     // ---------- COMBINED BATTING ----------
 
     let combinedBatting = {};
@@ -1246,10 +1228,6 @@ function saveMatch() {
     // ---------- MATCH OBJECT ----------
 
     let matchData = {
-
-        username,
-
-        password,
 
         matchName: matchConfig.matchName,
 
