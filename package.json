@@ -1,0 +1,24 @@
+{
+  "name": "cricket_score_master",
+  "version": "1.0.0",
+  "description": "Cricket Score Master is a complete cricket scoring web application developed using HTML, CSS and JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guriyajainsunny-web/cricket_score_master.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/guriyajainsunny-web/cricket_score_master/issues"
+  },
+  "homepage": "https://github.com/guriyajainsunny-web/cricket_score_master#readme",
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
+}
