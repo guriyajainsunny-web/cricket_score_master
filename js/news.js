@@ -15,7 +15,7 @@ fetch("/api/news")
 
     container.innerHTML = "";
 
-    data.articles.forEach((article) => {
+    data.articles.slice(0, 12).forEach((article) => {
 
       container.innerHTML += `
         <div class="newsCard">
