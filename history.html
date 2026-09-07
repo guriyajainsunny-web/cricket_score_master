@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        CRICKET_SCORE_MASTER - Match History
+        CRICKET_SCORE_MASTER 
     </title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -20,21 +20,26 @@
 
 </head>
 
-<body>
+<body
+    style="margin: 0; padding: 0; background: var(--bg-dark, #0c0c0c); color: var(--text-color, #ffffff); font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; max-width: 100vw;">
 
-    <header class="navbar">
+    <header class="navbar"
+        style="min-height: 68px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 12px 40px; background: var(--bg-navbar, #05111f); border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); width: 100%; box-sizing: border-box;">
 
-        <div class="logo">
+        <div class="logo"
+            style="font-size: 18px; font-weight: 700; letter-spacing: 1px; color: var(--primary-color, #9dfc05); white-space: nowrap; text-align: center;">
 
             🏏 CRICKET_SCORE_MASTER
 
         </div>
 
-        <ul class="menu">
+        <ul class="menu"
+            style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
 
-            <li>
+            <li style="list-style: none;">
 
-                <a href="index.html" style="color:white;text-decoration:none;">
+                <a href="index.html"
+                    style="color:white; text-decoration:none; font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
 
                     HOME
 
@@ -42,9 +47,10 @@
 
             </li>
 
-            <li>
+            <li style="list-style: none;">
 
-                <a href="livescorer.html" style="color:white;text-decoration:none;">
+                <a href="livescorer.html"
+                    style="color:white; text-decoration:none; font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
 
                     LIVE SCORER
 
@@ -52,7 +58,8 @@
 
             </li>
 
-            <li class="active">
+            <li class="active"
+                style="list-style: none; color: var(--primary-color, #9dfc05); font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
 
                 MY HISTORY
 
@@ -62,61 +69,93 @@
 
     </header>
 
-    <section class="hero">
+    <section class="hero" style="width: 100%; padding: 20px; box-sizing: border-box;">
 
-        <div class="hero-overlay">
+        <div class="hero-overlay"
+            style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)), url('../assets/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; min-height: calc(100vh - 108px); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); box-shadow: 0 0 30px rgba(0, 0, 0, 0.35); box-sizing: border-box;">
 
-            <div class="info-card">
+            <div class="info-card"
+                style="padding: 15px; width: 100%; background: var(--bg-card, rgba(4, 14, 28, 0.95)); border-radius: 14px; border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); overflow: hidden; box-sizing: border-box;">
 
-                <h2>
+                <h2
+                    style="font-size: 20px; font-weight: 700; line-height: 1.4; color: var(--primary-color, #9dfc05); margin-bottom: 15px; word-break: break-word;">
 
                     Match History
 
                 </h2>
 
-                <br>
+                <div style="width: 100%; margin-bottom: 20px;">
+                    <input type="text" id="searchBox" placeholder="Search Match / Team / player"
+                        onkeyup="searchMatches()"
+                        style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--bg-element, #071827); color: var(--text-color, #ffffff); font-size: 15px; box-sizing: border-box;">
+                </div>
 
-                <input type="text" id="searchBox" placeholder="Search Match / Team / player" onkeyup="searchMatches()">
+                <!-- RESPONSIVE TABLE WRAPPER CONTAINER FOR MOBILE SCROLLING -->
+                <div class="table-responsive"
+                    style="width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; border: 1px solid var(--primary-color, #9dfc05);">
 
-                <br><br>
+                    <table id="historyTable"
+                        style="width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; white-space: nowrap;">
 
-                <table id="historyTable">
+                        <thead>
 
-                    <thead>
+                            <tr>
 
-                        <tr>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Match</th>
 
-                            <th>Match</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Team 1</th>
 
-                            <th>Team 1</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Team 2</th>
 
-                            <th>Team 2</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Result</th>
 
-                            <th>Result</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    1st Inn</th>
 
-                            <th>1st Inn</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    2nd Inn</th>
 
-                            <th>2nd Inn</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    POTM</th>
 
-                            <th>POTM</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Top Batter</th>
 
-                            <th>Top Batter</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Top Bowler</th>
 
-                            <th>Top Bowler</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    View</th>
 
-                            <th>View</th>
+                                <th
+                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
+                                    Delete</th>
 
-                            <th>Delete</th>
+                            </tr>
 
-                        </tr>
+                        </thead>
 
-                    </thead>
+                        <tbody>
 
-                    <tbody>
+                        </tbody>
 
-                    </tbody>
+                    </table>
 
-                </table>
+                </div>
 
             </div>
 
