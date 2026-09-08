@@ -2,16 +2,10 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <title>
-
-        CRICKET_SCORE_MASTER
-
-    </title>
+    <title>CRICKET_SCORE_MASTER</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -20,6 +14,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <style>
+        /* ===== MATCH DETAILS — COMPACT, CLEAN & RESPONSIVE ===== */
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .hero {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 24px 0 40px;
+            box-sizing: border-box;
+        }
+
+        .hero-overlay {
+            height: auto !important;
+            min-height: 0 !important;
+            width: min(1250px, calc(100% - 32px));
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .hero-overlay>.info-card {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-x: auto;
+        }
+
+        /* Match heading area */
+        #matchTitle {
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+
+        #matchResult {
+            margin: 0 0 12px;
+            line-height: 1.4;
+        }
+
+        #potm {
+            font-weight: 600;
+        }
+
+        /* Tables use only the space they actually need. */
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 18px;
+        }
+
+        th,
+        td {
+            padding: 8px 10px;
+            white-space: nowrap;
+        }
+
+        h3 {
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        h4 {
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        hr {
+            margin: 18px 0;
+        }
+
+        /* Make wide scorecards scroll horizontally instead of expanding the page. */
+        .info-card {
+            scrollbar-width: thin;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                padding: 14px 0 24px;
+            }
+
+            .hero-overlay {
+                width: calc(100% - 20px);
+            }
+
+            th,
+            td {
+                padding: 7px 8px;
+                font-size: 13px;
+            }
+
+            #matchTitle {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,27 +126,21 @@
     <header class="navbar">
 
         <div class="logo">
-
             🏏 CRICKET_SCORE_MASTER
-
         </div>
 
         <ul class="menu">
 
             <li>
-
-            <li><a href="history.html" style="color:white;text-decoration:none;">
-
+                <a href="history.html" style="color:white;text-decoration:none;">
                     MY HISTORY
+                </a>
+            </li>
 
-                </a></li>
-
-            <li><a href="index.html" style="color:white;text-decoration:none;">
-
+            <li>
+                <a href="index.html" style="color:white;text-decoration:none;">
                     HOME
-
-                </a></li>
-
+                </a>
             </li>
 
         </ul>
@@ -60,42 +153,24 @@
 
             <div class="info-card">
 
-                <h2 id="matchTitle">
+                <h2 id="matchTitle"></h2>
 
-                </h2>
-
-                <h3 id="matchResult">
-
-                </h3>
+                <h3 id="matchResult"></h3>
 
                 <h3>
-
                     Player Of The Match :
-
-                    <span id="potm">
-
-                    </span>
-
+                    <span id="potm"></span>
                 </h3>
 
                 <hr>
 
-                <h3>
+                <h3>1st Innings</h3>
 
-                    1st Innings
-
-                </h3>
-
-                <h4 id="firstScore">
-
-                </h4>
+                <h4 id="firstScore"></h4>
 
                 <table id="firstBatting">
-
                     <thead>
-
                         <tr>
-
                             <th>Batter</th>
                             <th>Dismissal</th>
                             <th>R</th>
@@ -103,61 +178,37 @@
                             <th>4s</th>
                             <th>6s</th>
                             <th>SR</th>
-
                         </tr>
-
                     </thead>
-
-                    <tbody>
-
-                    </tbody>
-
+                    <tbody></tbody>
                 </table>
 
                 <h4>Bowling Scorecard</h4>
 
                 <table id="firstBowling">
-
                     <thead>
-
                         <tr>
-
                             <th>Bowler</th>
                             <th>O</th>
                             <th>R</th>
                             <th>W</th>
                             <th>Eco</th>
-
                         </tr>
-
                     </thead>
-
-                    <tbody>
-
-                    </tbody>
-
+                    <tbody></tbody>
                 </table>
 
                 <hr>
 
-                <h3>
+                <h3>2nd Innings</h3>
 
-                    2nd Innings
-
-                </h3>
-
-                <h4 id="secondScore">
-
-                </h4>
+                <h4 id="secondScore"></h4>
 
                 <h4>Batting Scorecard</h4>
 
                 <table id="secondBatting">
-
                     <thead>
-
                         <tr>
-
                             <th>Batter</th>
                             <th>Dismissal</th>
                             <th>R</th>
@@ -165,39 +216,24 @@
                             <th>4s</th>
                             <th>6s</th>
                             <th>SR</th>
-
                         </tr>
-
                     </thead>
-
-                    <tbody>
-
-                    </tbody>
-
+                    <tbody></tbody>
                 </table>
 
                 <h4>Bowling Scorecard</h4>
 
                 <table id="secondBowling">
-
                     <thead>
-
                         <tr>
-
                             <th>Bowler</th>
                             <th>O</th>
                             <th>R</th>
                             <th>W</th>
                             <th>Eco</th>
-
                         </tr>
-
                     </thead>
-
-                    <tbody>
-
-                    </tbody>
-
+                    <tbody></tbody>
                 </table>
 
             </div>

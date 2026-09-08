@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        CRICKET_SCORE_MASTER 
+        CRICKET_SCORE_MASTER
     </title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -16,6 +16,456 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+
+    <style>
+        /* =========================================================
+           LIVE SCORER — COMPACT, POLISHED & FULL-PAGE BACKGROUND
+           ========================================================= */
+
+        html {
+            min-height: 100%;
+            background: #06111f;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            background:
+                linear-gradient(rgba(2, 10, 20, .48), rgba(2, 10, 20, .68)),
+                url('assets/bg.jpg') center center / cover fixed no-repeat;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            min-height: 68px;
+            padding: 12px 40px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            background: rgba(3, 13, 26, .94) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .logo {
+            color: var(--primary-color, #9dfc05);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu li {
+            list-style: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .4px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .menu a:hover {
+            color: var(--primary-color, #9dfc05) !important;
+        }
+
+        .menu .active {
+            color: var(--primary-color, #9dfc05);
+        }
+
+        /* Continuous page background */
+        .hero {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 18px 16px 34px;
+            box-sizing: border-box;
+            background: transparent !important;
+        }
+
+        .hero-overlay {
+            width: min(1250px, 100%);
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 auto;
+            padding: 18px;
+            box-sizing: border-box;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* Content-sized cards */
+        .info-card,
+        .scoreboard,
+        .batters,
+        .center-box,
+        .right-panel {
+            height: auto !important;
+            min-height: 0 !important;
+            box-sizing: border-box;
+        }
+
+        .info-card {
+            margin: 0 0 16px;
+            padding: 17px;
+            border-radius: 15px;
+            background: rgba(4, 18, 32, .90) !important;
+            border: 1px solid rgba(157, 252, 5, .15);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
+            backdrop-filter: blur(4px);
+            overflow-x: auto;
+        }
+
+        .info-card h3 {
+            margin: 0 0 12px;
+            color: var(--primary-color, #9dfc05);
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        /* Live header */
+        .live-badge {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .match-title {
+            margin: 4px 0 3px;
+            text-align: center;
+            font-size: clamp(25px, 4vw, 42px);
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .series-title {
+            margin-bottom: 16px;
+            text-align: center;
+            font-size: 14px;
+            opacity: .85;
+        }
+
+        /* Main scoreboard */
+        .scoreboard {
+            display: grid;
+            grid-template-columns: minmax(190px, 1fr) minmax(220px, 1.15fr) minmax(150px, .75fr);
+            gap: 16px;
+            align-items: center;
+            margin: 0 0 16px;
+            padding: 18px 20px;
+            border-radius: 28px;
+            background: rgba(2, 13, 25, .94) !important;
+            border: 1px solid rgba(255, 255, 255, .07);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+        }
+
+        .batters {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .batter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 10px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .035);
+        }
+
+        .batter .name {
+            font-weight: 600;
+        }
+
+        .batter .runs {
+            white-space: nowrap;
+        }
+
+        .center-box {
+            text-align: center;
+        }
+
+        .center-box .match {
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-pill {
+            display: inline-block;
+            padding: 7px 22px;
+            border-radius: 30px;
+            background: #ff2290;
+            color: #fff;
+            font-size: clamp(27px, 4vw, 38px);
+            font-weight: 700;
+            line-height: 1.15;
+            box-shadow: 0 8px 24px rgba(255, 34, 144, .18);
+        }
+
+        .overs {
+            margin-top: 7px;
+            font-size: 15px;
+        }
+
+        .pp {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 11px;
+            border-radius: 18px;
+            background: #ffd400;
+            color: #111;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .right-panel {
+            text-align: center;
+        }
+
+        .right-panel #bowlerDisplay {
+            display: block;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .right-panel #bowlerFigures {
+            display: block;
+            margin-top: 4px;
+            font-size: 15px;
+        }
+
+        /* Ball indicators */
+        .this-over {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .ball {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #7c20ff;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        /* Inputs and selects */
+        input,
+        select {
+            width: 100%;
+            min-height: 40px;
+            padding: 8px 11px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 8px;
+            outline: none;
+            background: rgba(7, 24, 39, .95);
+            color: #fff;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary-color, #9dfc05);
+            box-shadow: 0 0 0 3px rgba(157, 252, 5, .10);
+        }
+
+        /* Buttons */
+        button {
+            min-height: 40px;
+            padding: 8px 15px;
+            border: 1px solid rgba(157, 252, 5, .30);
+            border-radius: 9px;
+            background: rgba(157, 252, 5, .12);
+            color: #fff;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+        }
+
+        button:hover {
+            background: var(--primary-color, #9dfc05);
+            color: #07120a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(157, 252, 5, .18);
+        }
+
+        /* Scoring controls */
+        #scoringCard>div {
+            min-height: 0 !important;
+        }
+
+        #scoringCard button {
+            min-width: 54px;
+        }
+
+        #scoringCard button:nth-last-child(2),
+        #scoringCard button:last-child {
+            padding-inline: 18px;
+        }
+
+        /* Tables remain readable without widening the whole page */
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 16px;
+        }
+
+        th,
+        td {
+            padding: 8px 10px;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .info-card table {
+            min-width: 620px;
+        }
+
+        #commentaryBox {
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 12px;
+            border-radius: 9px;
+            background: rgba(0, 0, 0, .18);
+        }
+
+        hr {
+            margin: 13px 0;
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        /* Hidden dynamic panels do not reserve space */
+        [style*="display:none"] {
+            height: 0 !important;
+            min-height: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            overflow: hidden !important;
+        }
+
+        [style*="display:none"] .info-card {
+            height: auto !important;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 10px 18px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu {
+                width: 100%;
+                gap: 12px;
+            }
+
+            .scoreboard {
+                grid-template-columns: 1fr;
+                text-align: center;
+                border-radius: 20px;
+            }
+
+            .batters {
+                width: 100%;
+            }
+
+            .right-panel {
+                width: 100%;
+            }
+
+            .hero {
+                padding: 12px 8px 26px;
+            }
+
+            .hero-overlay {
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .menu li {
+                font-size: 13px;
+            }
+
+            .match-title {
+                font-size: 25px;
+            }
+
+            .scoreboard {
+                padding: 14px;
+            }
+
+            .batter {
+                padding: 7px 8px;
+            }
+
+            .info-card {
+                padding: 14px;
+                border-radius: 12px;
+            }
+
+            .info-card h3 {
+                font-size: 16px;
+            }
+
+            th,
+            td {
+                padding: 7px 8px;
+                font-size: 13px;
+            }
+
+            #scoringCard button {
+                flex: 1 1 calc(25% - 10px);
+            }
+        }
+    </style>
 
 </head>
 
@@ -81,7 +531,7 @@
                 Match Name
             </div>
 
-            <br>
+
 
             <!-- SCOREBOARD -->
 
@@ -144,14 +594,14 @@
                 <div class="right-panel">
 
                     <span id="bowlerDisplay">Bowler</span>
-                    <br>
+
                     <span id="bowlerFigures">0-0</span>
 
                 </div>
 
             </div>
 
-            <br>
+
 
             <!-- MATCH INFO -->
 
@@ -191,7 +641,7 @@
 
             </div>
 
-            <br>
+
 
             <!-- SCORING BUTTONS -->
             <div class="info-card" id="scoringCard">
@@ -377,7 +827,7 @@
                 </button>
 
             </div>
-            <br>
+
 
             <!-- SCOREBOARD SECTION -->
 
@@ -411,7 +861,7 @@
                         Score
                     </div>
 
-                    <br>
+
 
                     <h4>
                         Batting Scorecard
@@ -441,7 +891,7 @@
 
                     </table>
 
-                    <br>
+
 
                     <h4>
                         Bowling Scorecard
@@ -484,7 +934,7 @@
                         Score
                     </div>
 
-                    <br>
+
 
                     <h4>
                         Batting Scorecard
@@ -514,7 +964,7 @@
 
                     </table>
 
-                    <br>
+
 
                     <h4>
                         Bowling Scorecard
@@ -547,7 +997,7 @@
 
             </div>
 
-            <br>
+
 
             <!-- RESULT -->
 
@@ -563,7 +1013,7 @@
 
             </div>
 
-            <br>
+
             <div class="info-card">
 
                 <h3>
@@ -605,7 +1055,7 @@
 
                 </table>
 
-                <br>
+
 
                 <h4>Top Bowlers</h4>
                 <table id="leaderboardBowling">

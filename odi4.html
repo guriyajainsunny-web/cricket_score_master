@@ -1,87 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRICKET_SCORE_MASTER - 4th odi </title>
+    <title>CRICKET_SCORE_MASTER - 4th ODI</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <style>
+        /* ===== COMPACT CONTENT-SIZED LAYOUT ===== */
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body.cricket-page {
+            min-height: 100vh;
+            margin: 0;
+            background-image:
+                linear-gradient(rgba(2, 13, 28, .42), rgba(2, 13, 28, .62)),
+                url('assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .match-title,
+        .series-title {
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+        #overview {
+            height: auto !important;
+            min-height: 0 !important;
+            width: min(1200px, calc(100% - 32px));
+            margin: 24px auto 40px;
+            box-sizing: border-box;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            align-items: start;
+        }
+
+        .info-card {
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0;
+            align-self: start;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .info-card ul {
+            margin-bottom: 0;
+        }
+
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        hr {
+            margin: 18px 0;
+        }
+
+        @media (max-width: 800px) {
+            #overview {
+                width: calc(100% - 20px);
+                margin-top: 14px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body
-    style="background-image: url('assets/background112.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<body class="cricket-page">
+
+    <header class="navbar">
+        <div class="logo">
+            🏏 CRICKET_SCORE_MASTER
+        </div>
+
+        <ul class="menu">
+            <li><a href="index.html" style="color:white;text-decoration:none;">HOME</a></li>
+            <li class="active">4TH ODI</li>
+        </ul>
+    </header>
+
+    <br>
+
+    <div class="match-title">
+        INDIA <span>vs</span> AUSTRALIA
+    </div>
+
+    <div class="series-title">
+        ODI SERIES • 4TH ODI
+    </div>
+
+    <div id="overview" class="tab-content active-content">
+
+        <div class="overview-grid">
+
+            <div class="info-card">
+                <h3>MATCH INFO</h3>
+
+                <ul>
+                    <li>Series : India vs Australia ODI Series</li>
+                    <li>date : 13/05/2026</li>
+                    <li>win percent : india-60% australia-40%</li>
+                    <li>Match : 4TH ODI</li>
+                    <li>Venue : Arun Jaitley Stadium</li>
+                    <li>Series status : IND: 1-1 : AUS</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>PREVIOUS MATCHES</h3>
+
+                <p>1st ODI - AUS won by 5 wickets</p>
+                <p>2nd ODI - IND won by 22 runs</p>
+
+                <hr>
+
+                <h3>LIVE MATCHES</h3>
+                <p>3rd ODI - IND:244/4 AUS:YTB</p>
+
+                <hr>
+
+                <h3>UPCOMING MATCHES</h3>
+                <p>4TH ODI</p>
+                <p>5th ODI</p>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
-
-<header class="navbar">
-
-    <div class="logo">
-        🏏 CRICKET_SCORE_MASTER
-    </div>
-
-    <ul class="menu">
-        <li><a href="index.html" style="color:white;text-decoration:none;">HOME</a></li>
-        <li class="active">4TH ODI</li>
-    </ul>
-</header>
-<div class="match-title">
-    INDIA <span>vs</span> AUSTRALIA
-</div>
-
-
-
-</div>
-
-<div class="series-title">
-    ODI SERIES • 4TH ODI
-</div>
-<div id="overview" class="tab-content active-content">
-
-    <div class="overview-grid">
-
-        <div class="info-card">
-
-            <h3>MATCH INFO</h3>
-
-            <ul>
-
-                <li>Series : India vs Australia ODI Series</li>
-                <li>date : 13/05/2026</li>
-                <li>win percent : india-60% australia-40%</li>
-                <li>Match : 4TH ODI</li>
-                <li>Venue : Arun Jaitley Stadium</li>
-                <li>Series status : IND: 1-1 : AUS</li>
-            </ul>
-
-        </div>
-
-        <div class="info-card">
-
-            <h3>PREVIOUS MATCHES</h3>
-
-            <p>1st ODI - AUS won by 5 wickets</p>
-            <p>2nd ODI - IND won by 22 runs</p>
-
-            <hr>
-            <h3>LIVE MATCHES</h3>
-
-            <p>3rd ODI - IND:244/4 AUS:YTB</p>
-
-            <hr>
-            <h3>UPCOMING MATCHES</h3>
-
-            <p>4TH ODI</p>
-            <p>5th ODI</p>
-
-
-        </div>
-
-    </div>
-
 
 </html>

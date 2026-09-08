@@ -12,10 +12,243 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <style>
+        /* ===== HOME PAGE — COMPACT & POLISHED ===== */
+
+        html {
+            min-height: 100%;
+            background: #0c0c0c;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.48)),
+                url('assets/bg.jpg') center center / cover fixed no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Let the full-page cricket background show through all page areas. */
+        .hero,
+        section.hero,
+        .hero-overlay {
+            background: transparent !important;
+        }
+
+        /* One continuous background across the whole page — no image seam */
+        .hero-overlay {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+
+        .hero {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 18px 0 32px;
+            box-sizing: border-box;
+        }
+
+        .hero-overlay {
+            width: min(1250px, calc(100% - 32px));
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* Content-sized main sections */
+        .match-header,
+        .scoreboard,
+        .tabs,
+        .tab-content,
+        .overview-grid,
+        .info-card,
+        .timeline {
+            height: auto !important;
+            min-height: 0 !important;
+            box-sizing: border-box;
+        }
+
+        .scoreboard {
+            display: grid;
+            grid-template-columns: minmax(190px, 1fr) minmax(220px, 1.15fr) minmax(170px, .8fr);
+            gap: 18px;
+            align-items: center;
+            margin: 16px 0 20px;
+        }
+
+        .batters {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+        .center-box,
+        .right-panel {
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+        .tabs {
+            margin: 14px 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            align-items: start;
+        }
+
+        .info-card {
+            margin: 0;
+            align-self: start;
+            overflow-x: auto;
+        }
+
+        /* Score tables stay readable without forcing the page wider. */
+        .score-table,
+        .info-card table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
+
+        .score-table th,
+        .score-table td,
+        .info-card table th,
+        .info-card table td {
+            padding: 7px 9px;
+            white-space: nowrap;
+        }
+
+        .score-table img,
+        .info-card table img {
+            flex-shrink: 0;
+        }
+
+        .series-menu {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .timeline {
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            box-sizing: border-box;
+        }
+
+
+        /* ===== TOGGLE MENUS: CLEAN TEXT + NORMAL SCROLLBAR CURSOR ===== */
+        .series-menu {
+            cursor: default !important;
+            color: #ffffff !important;
+        }
+
+        /* Menu body text stays white instead of inheriting the neon accent. */
+        .series-menu p,
+        .series-menu li,
+        .series-menu td,
+        .series-menu th,
+        .series-menu ul {
+            color: #ffffff !important;
+        }
+
+        /* Only menu headings use the cricket-green accent. */
+        .series-menu h3,
+        .series-menu h5,
+        .series-menu h4 {
+            color: var(--primary-color, #9dfc05) !important;
+        }
+
+        /* Don't make normal list items look like clickable buttons. */
+        .series-menu li {
+            cursor: default !important;
+        }
+
+        .series-menu li:hover,
+        .series-menu p:hover {
+            color: #ffffff !important;
+            background: transparent !important;
+        }
+
+        /* Keep the scrollbar usable, but never show a hand cursor on it. */
+        .series-menu::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .series-menu::-webkit-scrollbar-track {
+            cursor: default !important;
+        }
+
+        .series-menu::-webkit-scrollbar-thumb {
+            cursor: default !important;
+        }
+
+        .series-menu * {
+            cursor: default;
+        }
+
+        /* Actual links inside the toggle menu can still be clicked normally. */
+        .series-menu a {
+            cursor: pointer;
+        }
+
+        /* Don't reserve space for hidden tab panels. */
+        .tab-content:not(.active-content) {
+            height: 0 !important;
+            min-height: 0 !important;
+            overflow: hidden !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        @media (max-width: 900px) {
+            .scoreboard {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-overlay {
+                width: calc(100% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 12px 0 24px;
+            }
+
+            .score-table th,
+            .score-table td,
+            .info-card table th,
+            .info-card table td {
+                padding: 6px 7px;
+                font-size: 13px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
-
 
     <header class="navbar">
 
@@ -188,7 +421,8 @@
                                 <TD>260</TD>
                             </TR>
                             <TR>
-                                <TD>SHAKIB AL HASAN<div class=""></div></TD>
+                                <TD>SHAKIB AL HASAN<div class=""></div>
+                                </TD>
                                 <TD>258</TD>
                             </TR>
                         </table>
@@ -223,7 +457,7 @@
             <div class="series-title">
                 ODI SERIES • 3RD ODI
             </div>
-            <br>
+
 
             <div class="scoreboard">
 

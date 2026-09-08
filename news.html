@@ -2,24 +2,250 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06111f">
 
-    <title>
-        CRICKET_SCORE_MASTER 
-    </title>
+    <title>CRICKET_SCORE_MASTER — Latest Cricket News</title>
 
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <style>
+        /* =========================================================
+           NEWS PAGE — COMPACT, POLISHED & FULL-PAGE BACKGROUND
+           ========================================================= */
+
+        html {
+            min-height: 100%;
+            background: #06111f;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            background:
+                linear-gradient(rgba(2, 10, 20, .52), rgba(2, 10, 20, .68)),
+                url('assets/bg.png') center center / cover fixed no-repeat;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            min-height: 68px;
+            padding: 12px 40px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            background: rgba(3, 13, 26, .94) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .logo {
+            color: var(--primary-color, #9dfc05);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu li {
+            list-style: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .4px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .menu a:hover {
+            color: var(--primary-color, #9dfc05) !important;
+        }
+
+        .menu .active {
+            color: var(--primary-color, #9dfc05);
+        }
+
+        /* Full-page continuous background */
+        .hero {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 22px 16px 34px;
+            box-sizing: border-box;
+            background: transparent !important;
+        }
+
+        .hero-overlay {
+            width: min(1200px, 100%);
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 auto;
+            padding: 22px;
+            box-sizing: border-box;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* Main news card */
+        .hero-overlay>.info-card {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0;
+            padding: 22px;
+            box-sizing: border-box;
+            border-radius: 18px;
+            background: rgba(4, 18, 32, .90) !important;
+            border: 1px solid rgba(157, 252, 5, .16);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .30);
+            backdrop-filter: blur(4px);
+        }
+
+        /* News heading */
+        .info-card>h2 {
+            margin: 0 0 18px;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: clamp(24px, 4vw, 38px) !important;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--primary-color, #9dfc05) !important;
+            text-align: center;
+            letter-spacing: .2px;
+        }
+
+        #newsContainer {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            box-sizing: border-box;
+        }
+
+        #loading {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 18px;
+            box-sizing: border-box;
+            text-align: center;
+            color: rgba(255, 255, 255, .85);
+            background: rgba(7, 24, 39, .72);
+            border-radius: 12px;
+        }
+
+        /* Dynamically generated news cards */
+        #newsContainer>* {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Remove layout-only spacer elements */
+        .info-card>br {
+            display: none;
+        }
+
+        /* Keep images responsive */
+        #newsContainer img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Prevent long text/URLs from breaking the page */
+        #newsContainer p,
+        #newsContainer div,
+        #newsContainer a,
+        #newsContainer h1,
+        #newsContainer h2,
+        #newsContainer h3,
+        #newsContainer h4 {
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                background-attachment: scroll;
+            }
+
+            .navbar {
+                padding: 10px 18px;
+                gap: 8px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu {
+                width: 100%;
+                gap: 12px;
+            }
+
+            .menu li {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 10px 8px 24px;
+            }
+
+            .hero-overlay {
+                padding: 8px;
+            }
+
+            .hero-overlay>.info-card {
+                padding: 16px;
+                border-radius: 14px;
+            }
+
+            .info-card>h2 {
+                margin-bottom: 14px;
+                font-size: 25px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6px 5px 18px;
+            }
+
+            .hero-overlay {
+                padding: 5px;
+            }
+
+            .hero-overlay>.info-card {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .info-card>h2 {
+                font-size: 22px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -27,53 +253,37 @@
     <header class="navbar">
 
         <div class="logo">
-
             🏏 CRICKET_SCORE_MASTER
-
         </div>
 
         <ul class="menu">
-
             <li>
-
-                <a href="index.html" style="color:white;text-decoration:none;">
-
+                <a href="index.html">
                     HOME
-
                 </a>
-
             </li>
 
             <li class="active">
-
                 NEWS
-
             </li>
-
         </ul>
 
     </header>
 
-    <section class="hero">
+    <main class="hero">
 
         <div class="hero-overlay">
 
             <div class="info-card">
 
-                <h2 style="font-family: algerian;font-size: 40;color: #8cff00;">
-
+                <h2>
                     📰 Latest Cricket News
-
                 </h2>
-
-                <br>
 
                 <div id="newsContainer">
 
                     <div id="loading">
-
                         🏏 Loading Latest Cricket News...
-
                     </div>
 
                 </div>
@@ -82,7 +292,7 @@
 
         </div>
 
-    </section>
+    </main>
 
     <script src="js/news.js"></script>
 

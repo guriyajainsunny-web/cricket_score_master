@@ -2,14 +2,9 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>
-        CRICKET_SCORE_MASTER 
-    </title>
+    <title>CRICKET_SCORE_MASTER</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -18,153 +13,234 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <style>
+        /* Compact, content-sized history page */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .navbar {
+            min-height: 68px;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            width: 100%;
+            padding: 16px;
+            box-sizing: border-box;
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+        .hero-overlay {
+            width: 100%;
+            min-height: 0 !important;
+            height: auto !important;
+            padding: 18px;
+            box-sizing: border-box;
+        }
+
+        .info-card {
+            width: 100%;
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .info-card h2 {
+            margin: 0 0 12px;
+        }
+
+        #searchBox {
+            display: block;
+            margin: 0;
+        }
+
+        .table-responsive {
+            width: 100%;
+            margin: 12px 0 0;
+            box-sizing: border-box;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #historyTable {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+        }
+
+        #historyTable th,
+        #historyTable td {
+            padding: 8px 10px;
+            line-height: 1.35;
+            vertical-align: middle;
+        }
+
+        #historyTable tbody tr {
+            height: auto;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 10px 18px !important;
+                gap: 8px;
+            }
+
+            .logo {
+                width: 100%;
+            }
+
+            .menu {
+                width: 100%;
+                gap: 12px !important;
+            }
+
+            .hero {
+                padding: 10px;
+            }
+
+            .hero-overlay {
+                padding: 12px;
+                border-radius: 14px !important;
+            }
+
+            .info-card {
+                padding: 12px;
+                border-radius: 12px !important;
+            }
+
+            .info-card h2 {
+                font-size: 18px !important;
+            }
+
+            #searchBox {
+                font-size: 14px !important;
+                padding: 10px !important;
+            }
+
+            .table-responsive {
+                margin-top: 10px;
+            }
+
+            #historyTable th,
+            #historyTable td {
+                padding: 7px 9px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero {
+                padding: 6px;
+            }
+
+            .hero-overlay {
+                padding: 8px;
+            }
+
+            .info-card {
+                padding: 10px;
+            }
+
+            .menu {
+                gap: 9px !important;
+            }
+
+            .menu a,
+            .menu .active {
+                font-size: 13px !important;
+            }
+        }
+    </style>
 </head>
 
 <body
-    style="margin: 0; padding: 0; background: var(--bg-dark, #0c0c0c); color: var(--text-color, #ffffff); font-family: 'Poppins', sans-serif; overflow-x: hidden; width: 100%; max-width: 100vw;">
+    style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)), url('../assets/bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; border-radius:20px; border:1px solid var(--border-color,rgba(255,255,255,.08)); box-shadow:0 0 30px rgba(0,0,0,.35);">
 
     <header class="navbar"
-        style="min-height: 68px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 12px 40px; background: var(--bg-navbar, #05111f); border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); width: 100%; box-sizing: border-box;">
+        style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:12px 40px; background:var(--bg-navbar,#05111f); border-bottom:1px solid var(--border-color,rgba(255,255,255,.08)); width:100%;">
 
         <div class="logo"
-            style="font-size: 18px; font-weight: 700; letter-spacing: 1px; color: var(--primary-color, #9dfc05); white-space: nowrap; text-align: center;">
-
+            style="font-size:18px; font-weight:700; letter-spacing:1px; color:var(--primary-color,#9dfc05); white-space:nowrap; text-align:center;">
             🏏 CRICKET_SCORE_MASTER
-
         </div>
 
         <ul class="menu"
-            style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0;">
-
-            <li style="list-style: none;">
-
+            style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:20px; list-style:none; margin:0; padding:0;">
+            <li style="list-style:none;">
                 <a href="index.html"
-                    style="color:white; text-decoration:none; font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
-
+                    style="color:white; text-decoration:none; font-size:15px; font-weight:600; letter-spacing:.4px;">
                     HOME
-
                 </a>
-
             </li>
 
-            <li style="list-style: none;">
-
+            <li style="list-style:none;">
                 <a href="livescorer.html"
-                    style="color:white; text-decoration:none; font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
-
+                    style="color:white; text-decoration:none; font-size:15px; font-weight:600; letter-spacing:.4px;">
                     LIVE SCORER
-
                 </a>
-
             </li>
 
             <li class="active"
-                style="list-style: none; color: var(--primary-color, #9dfc05); font-size: 15px; font-weight: 600; letter-spacing: 0.4px;">
-
+                style="list-style:none; color:var(--primary-color,#9dfc05); font-size:15px; font-weight:600; letter-spacing:.4px;">
                 MY HISTORY
-
             </li>
-
         </ul>
-
     </header>
 
-    <section class="hero" style="width: 100%; padding: 20px; box-sizing: border-box;">
-
-        <div class="hero-overlay"
-            style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)), url('../assets/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; min-height: calc(100vh - 108px); border-radius: 20px; padding: 25px; border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); box-shadow: 0 0 30px rgba(0, 0, 0, 0.35); box-sizing: border-box;">
-
-            <div class="info-card"
-                style="padding: 15px; width: 100%; background: var(--bg-card, rgba(4, 14, 28, 0.95)); border-radius: 14px; border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08)); overflow: hidden; box-sizing: border-box;">
-
-                <h2
-                    style="font-size: 20px; font-weight: 700; line-height: 1.4; color: var(--primary-color, #9dfc05); margin-bottom: 15px; word-break: break-word;">
-
+    <section class="hero">
+        <div class="hero-overlay">
+            
+            <div class="info-card">
+               
+                <h2 style="font-size:20px; font-weight:700; line-height:1.4; color:var(--primary-color,#9dfc05);">
                     Match History
-
                 </h2>
 
-                <div style="width: 100%; margin-bottom: 20px;">
+                <div style="width:100%; margin-bottom:0;">
                     <input type="text" id="searchBox" placeholder="Search Match / Team / player"
                         onkeyup="searchMatches()"
-                        style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--bg-element, #071827); color: var(--text-color, #ffffff); font-size: 15px; box-sizing: border-box;">
+                        style="width:100%; border:none; border-radius:8px; background:var(--bg-element,#071827); color:var(--text-color,#ffffff); box-sizing:border-box;">
                 </div>
 
-                <!-- RESPONSIVE TABLE WRAPPER CONTAINER FOR MOBILE SCROLLING -->
-                <div class="table-responsive"
-                    style="width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; border: 1px solid var(--primary-color, #9dfc05);">
-
-                    <table id="historyTable"
-                        style="width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; white-space: nowrap;">
-
+                <div class="table-responsive">
+                    <table id="historyTable" style="text-align:center; font-size:13px; white-space:nowrap;">
                         <thead>
-
                             <tr>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Match</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Team 1</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Team 2</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Result</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    1st Inn</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    2nd Inn</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    POTM</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Top Batter</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Top Bowler</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    View</th>
-
-                                <th
-                                    style="background: var(--primary-color, #9dfc05); color: black; padding: 10px; font-size: 14px; font-weight: 700; border: 1px solid var(--primary-color, #9dfc05);">
-                                    Delete</th>
-
+                                <th>Match</th>
+                                <th>Team 1</th>
+                                <th>Team 2</th>
+                                <th>Result</th>
+                                <th>1st Inn</th>
+                                <th>2nd Inn</th>
+                                <th>POTM</th>
+                                <th>Top Batter</th>
+                                <th>Top Bowler</th>
+                                <th>View</th>
+                                <th>Delete</th>
                             </tr>
-
                         </thead>
-
-                        <tbody>
-
-                        </tbody>
-
+                        <tbody></tbody>
                     </table>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
     <script src="js/history.js"></script>
-
 </body>
 
 </html>
